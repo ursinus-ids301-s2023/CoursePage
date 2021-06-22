@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>Assignment 2: Steganography (16 pts)</h1>
+                                        <h3>Due Wednesday 2/19/2020</h3>
+									</header>
+
+									<div id="page-content">
+										<p>
+                                            The purpose of this assignment is to get students practice with multidimensional arrays in Python representing images.  Please visit <a href = "https://github.com/Ursinus-IDS301-S2020/HW2_Steganography/archive/master.zip">this link</a> to get the starter code for this assignment.  You will be editing the file <code>Assignment2_Steganography.ipynb.</code>  This file actually has very little in it; it just has the imports you need.  You will be writing the bulk of the code in this assignment based on notes from class.
+                                        </p>
+
+                                    <h2>Part 1: Alpaca Tunes (8 Points)</h2>
+                                    <p>
+                                        <i>Steganography</i> refers broadly to the process of hiding one data stream inside of another.  In this assignment, you will explore an application of steganography in which audio data is hidden in the RGB values of pixels in an image.  Below are two images of an <a href = "https://en.wikipedia.org/wiki/Alpaca">alpaca</a> taken by my cousin <a href = "https://www.allieemphotography.com/">Allie Mellen</a>:
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td><center><code>alpaca.png</code></center></td>
+                                            <td><center><code>alpacastego.png</code></center></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src = "HW2_Steganography/alpaca.png"></td>
+                                            <td><img src = "HW2_Steganography/alpacastego.png"></td>
+                                        </tr>
+                                    </table>
+
+                                    Though it is nearly impossible to see with the naked eye, the right image contains three hidden 6 second audio clips: one in the red channel, one in the blue channel, and one in the green channel.  <b>Your job in this assignment will be to extract these audio clips and tell me what they are.</b>  Here are the steps you should follow to do this:
+
+                                    <ol>
+                                        <li>
+                                            First, load the image <code>alpacastego.png</code> into a variable.  To make sure you've done this properly, the shape of this variable should be (512, 512, 3); that is, it's a 512x512 image with three channels for red, green, and blue.</li>
+                                        <li>
+                                            Next, extract the red channel and <i>flatten</i> it into a 1D array, which you should store in another variable.
+                                        </li>
+                                        <li>
+                                            The audio is hidden in the "two least significant bits" of the flattened red channel; that is, the audio is what you get after you divide each element in the array by 4 and take the remainder.  You can do this with the <code>np.mod</code> command, as we have done for triangle waves.  If you forget how this works, type <code>np.mod?</code> in a cell and run it, and this will bring up the help menu.
+                                        </li>
+                                        <li>
+                                            Finally, play the audio that you extracted after taking the remainder above.  <i>You can assume the sample rate is <b>44100</b></i>.   Look back at the audio processing assignment to see how to play audio in Jupyter with a particular sample rate.  <i>If this worked properly, you should hear a clip from song</i>.  Otherwise, you will hear static. <b>Make a note of the song you hear in the notebook.</b>
+                                        </li>
+                                        <li>
+                                            Repeat steps #2-4 for the green and blue channels.
+                                        </li>
+                                    </ol>
+
+                                    <h2>Part 2: I Have A Dream (8 pts)</h2>
+                                    <p>
+                                        Below is an image of Martin Luther King Jr, saved in the file <code>MLKStego.png</code>:
+                                    </p>
+                                    <img src = "HW2_Steganography/MLKStego.png">
+                                    <p>
+                                        Hidden in this image is a 38 clip of a lesser known part of his "I Have A Dream" speech, but one which highlights one of his key tenets of his philosophy on activism.  A third of this clip has been hidden in the red channel, a third of it has been hidden in the green channel, and a third of it has been hidden in the blue channel, not necessarily in order.</p>
+                                    
+                                    <p>
+                                        As with the alpaca example, you can obtain each audio segment by flattening the pixels into raster order and taking the remainder after dividing by 4, and you may assume the sample rate is 44100hz.  However, you will need to do one more step to re-assemble the pieces into one contiguous chunk of audio.  Numpy's builtin command <code>concatenate</code> can help you do this.  For instance, the code<BR>
+                                        <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                            x = np.array([1, 2, 3])
+                                            y = np.array([4, 5, 6, 7])
+                                            z = np.array([8, 9])
+                                            xyz = np.concatenate((x, y, z))
+                                        ]]></script>  
+                                        
+                                        will create an array <code>xyz</code> that starts with the samples in <code>x</code>, followed by the samples in <code>y</code>, followed by the samples in <code>z</code>, for an array with the elements<BR> <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>.<BR>
+                                        <b>NOTE: </b> The code above is just an example of how to use <code>np.concatenate</code>; you will be replacing the variables <code>x</code>, <code>y</code>, and <code>z</code> with your own variables.
+                                    </p>
+                                    <p>
+                                        <b>Please show the code to extract and re-assemble the audio, and please transcribe what you hear into text in a markdown cell in your notebook</b>.  You may want to Google the "I Have A Dream" speech to make sure you're putting the segments in the right order.
+                                    </p>
+
+                                    <h2>Extra Credit: Hiding Audio (+5)</h2>
+                                    <p>
+                                        As a <b>fully optional</b> extra credit task, hide your own audio in the red, green, or blue channel of some image.  To ensure it works, you should start from scratch with the steps above to make sure you can extract it.  Hiding audio is <b>much</b> harder than extracting it (which is why this is extra credit), but here's a rough list of steps you can follow to do try:
+                                        <ol>
+                                            <li>Load in some audio, and <i>quantize</i> it to the range 0-3.  You can do this with a careful use of the <code>np.round</code> command.
+                                            </li>
+                                            <li>
+                                                Once the audio has been quantized to this range, cast it as a <code>uint8</code> type, which it needs to be to be added to an image channel.  For this discussion, let's say the audio is in a variable <code>x</code>.  You'd do this with <code>x = np.array(x, dtype=np.uint8)</code>.
+                                            </li>
+                                            <li>
+                                                Next, pull out one of the channels from the image, and flatten it into a variable.  For this discussion, let's call that variable <code>y</code>.  Subtract from every sample of <code>y</code> the remainder after dividing that sample by 4.  Then, add <code>x</code> to the first <code>x.size</code> samples of <code>y</code>.
+                                            </li>
+                                            <li>
+                                                Finally, <i>reshape</i> <code>y</code> to be the dimensions of your image, and overwrite the channel you extracted it from with <code>y</code>.  Type <code>np.reshape?</code> for help on this command.  As an example, if your image is 100x100, a flattened <code>y</code> is an array of 10000 samples.  You'd reshape it by typing<BR>
+                                                    <code>y = np.reshape(y, (100, 100))</code>
+                                            </li>
+                                        </ol>
+                                    </p>
+
+                                    <h2>What to submit</h2>
+                                    <p>
+                                        When you are finished the above tasks, please submit your <code>Assignment2_Steganography.ipynb</code> file to Canvas.  You should have a sentence describing each of the three audio clips in the notebook.  Please also submit a README with the answers to the following questions:
+
+                                        <ul>
+                                            <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                            <li>
+                                                Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                            </li>
+                                            <li>
+                                                Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                            </li>
+                                            <li>
+                                                Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                            </li>
+                                        </ul>
+                                    </p>
+                            </div>
+						</div>
+                    </div>
+
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>			
+			
+            <!-- Start of StatCounter Code -->
+            <script type="text/javascript">
+            var sc_project=7309088; 
+            var sc_invisible=1; 
+            var sc_security="f655b56d"; 
+            </script>
+            <script type="text/javascript"
+            src="http://www.statcounter.com/counter/counter.js"></script>
+            <noscript><div class="statcounter"><a title="free hit counter"
+            href="http://statcounter.com/" target="_blank"><img class="statcounter"
+            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
+            counter"></a></div></noscript>
+            <!-- End of StatCounter Code -->
+<!-- End Sidebar !-->
+

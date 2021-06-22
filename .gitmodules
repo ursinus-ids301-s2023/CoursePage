@@ -34,3 +34,12 @@
 [submodule "Lectures/Week13Class"]
 	path = Lectures/Week13Class
 	url = https://github.com/Ursinus-IDS301-S2020/Week13Class.git
+[submodule "Assignments/HW1a"]
+	path = Assignments/HW1a
+	url = https://github.com/Ursinus-IDS301-S2020/HW1a.git
+[submodule "Assignments/HW1_AudioProcessing/HW1_AudioProcessing"]
+	path = Assignments/HW1_AudioProcessing/HW1_AudioProcessing
+	url = https://github.com/Ursinus-IDS301-S2020/HW1_AudioProcessing.git
+[submodule "Assignments/HW2_Steganography/HW2_Steganography"]
+	path = Assignments/HW2_Steganography/HW2_Steganography
+	url = https://github.com/Ursinus-IDS301-S2020/HW2_Steganography.git

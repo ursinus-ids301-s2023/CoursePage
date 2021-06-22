@@ -7,3 +7,30 @@
 [submodule "Lectures/Week2Class"]
 	path = Lectures/Week2Class
 	url = https://github.com/Ursinus-IDS301-S2020/Week2Class.git
+[submodule "Lectures/Week4Class"]
+	path = Lectures/Week4Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week4Class.git
+[submodule "Lectures/Week5Class"]
+	path = Lectures/Week5Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week5Class.git
+[submodule "Lectures/Week6Class"]
+	path = Lectures/Week6Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week6Class.git
+[submodule "Lectures/Week8Class"]
+	path = Lectures/Week8Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week8Class.git
+[submodule "Lectures/Week9Class"]
+	path = Lectures/Week9Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week9Class.git
+[submodule "Lectures/Week10Class"]
+	path = Lectures/Week10Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week10Class.git
+[submodule "Lectures/Week11Class"]
+	path = Lectures/Week11Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week11Class.git
+[submodule "Lectures/Week12Class"]
+	path = Lectures/Week12Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week12Class.git
+[submodule "Lectures/Week13Class"]
+	path = Lectures/Week13Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week13Class.git

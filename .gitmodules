@@ -43,3 +43,9 @@
 [submodule "Assignments/HW2_Steganography/HW2_Steganography"]
 	path = Assignments/HW2_Steganography/HW2_Steganography
 	url = https://github.com/Ursinus-IDS301-S2020/HW2_Steganography.git
+[submodule "Assignments/HW4_NBodyProblem/HW4_NBodyProblem"]
+	path = Assignments/HW4_NBodyProblem/HW4_NBodyProblem
+	url = https://github.com/Ursinus-IDS301-S2020/HW4_NBodyProblem.git
+[submodule "Assignments/HW4b_EpidemicSpreading/HW4b_EpidemicSpreading"]
+	path = Assignments/HW4b_EpidemicSpreading/HW4b_EpidemicSpreading
+	url = https://github.com/Ursinus-IDS301-S2020/HW4b_EpidemicSpreading.git

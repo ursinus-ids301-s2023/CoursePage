@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW3a: Gregorian Leap Years (10 Points)</h1>
+                                        <h3>Due Monday 2/24/2020</h3>
+									</header>
+
+									<div id="page-content">
+									    
+
+                                    <h2>Overview</h2>
+
+                                    <p>
+                                        Because the length of a <a href = "https://en.wikipedia.org/wiki/Tropical_year">tropical year</a> is actually about <b>365.24 days</b>, we occasionally need <i>leap years</i> with 366 days to keep everything on track.  The <a href = "https://en.wikipedia.org/wiki/Julian_calendar">Julian calendar</a> originally had a simple rule that a leap year occurred every 4 years, but this led to too many leap years, so the modern <a href = "https://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a> has slightly different rules, which are as follows:
+                                        <ul>
+                                            <li>
+                                                Every year that is not a centennial year, but which is evenly divisible by 4, is a leap year.
+                                            </li>
+                                            <li>
+                                                Only centennial years which are evenly divisible by 400 are leap years.  So, for instance, the year 2000 was a leap year, and 2400 will be a leap year, but 1900 was not, nor will 2100, 2200, or 2300 be.
+                                            </li>
+                                        </ul>
+                                    </p>
+
+                                    <h2>Code To Write</h2>
+                                    <p>
+                                        You should create a new file called <code>LeapYear.py</code>.  In this file, you should write a function <code>is_a_leap_year(year)</code> which takes as input a year, and which returns <code>True</code> if that year is a leap year or <code>False</code> otherwise.  Please submit this file to Canvas when you are finished. <b>Please also submit answers to the following as a comment on Canvas:</b>
+                                        </p>
+                                        <p>
+                                            <ul>
+                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                                <li>
+                                                    Are you using up any grace points to buy lateness days?  If so, how many?
+                                                </li>
+                                                <li>
+                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                                </li>
+                                                <li>
+                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                                </li>
+                                                <li>
+                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                                </li>
+                                            </ul>
+                                    </p>
+
+                                    <h2>Testing</h2>
+                                    <p>
+                                        Be sure to run your code on at least 4 cases that cover all of your code:
+                                        <ul>
+                                            <li>A non-centennial year which is not a leap year (e.g. 1997)</li>
+                                            <li>A non-centennial year which is a leap year (e.g. 2020)</li>
+                                            <li>A centennial year which is not a leap year (e.g. 1900)</li>
+                                            <li>A centennial year which is a leap year (e.g. 2400)</li>
+                                        </ul>
+                                    </p>
+
+									    
+                                    </div>
+                            </div>
+						</div>
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW3b: The Chaos Game (15 Points)</h1>
+                                        <h3>Due Monday 2/28/2020</h3>
+									</header>
+
+									<div id="page-content">
+									    
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this assignment is to get you practice with loops and functions in a fun, visual application.  This is the IDS 301/Python version of the <a href = "../../../CS173_S2020/Assignments/HW4_ChaosGame">CS 173/Java</a> assignment, so you may want to talk to some people in CS 173 about the logic as you're working through this.
+                                        </p>
+
+                                        <p>
+                                        <p><a name = "readme">What to submit</a>: <b>When you are finished, you should submit <code>Triangle.py</code> to Canvas, along with answers to the following as a comment on Canvas:</b>
+                                        </p>
+                                        <p>
+                                            <ul>
+                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                                <li>
+                                                    Are you using up any grace points to buy lateness days?  If so, how many?
+                                                </li>
+                                                <li>
+                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                                </li>
+                                                <li>
+                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                                </li>
+                                                <li>
+                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                                </li>
+                                            </ul>
+
+                                            <h2>The Problem</h2>
+                                            <p>
+                                                <a href = "https://en.wikipedia.org/wiki/Fractal">Fractals</a> are beautiful mathematical shapes which are <i>self-similar</i>, which means they are made up of smaller parts of themselves.  Many shapes in nature are approximately fractals.  Take a <a href = "https://en.wikipedia.org/wiki/Barnsley_fern">fern</a>, for example.  As shown below, it's possible to make a fern out of smaller ferns which are rotated, translated (moved), and scaled, but which are otherwise exactly the same.  And those smaller ferns, in turn, are made up of even smaller versions of the exact same fern:
+                                            </p>
+                                            <img src = "fern.png">
+                                            <p>
+                                                In this assignment, you will be making another type of fractal by simulating a probabilistic game known as <b>the chaos game</b>.  This game consists of choosing some points on a polygon, and then drawing a bunch more points on the inside of that polygon by following a bunch of random steps.  As such, it is a great assignment for exploring loops.
+                                            </p>
+        
+                                            <HR>
+                                            <h2><a name = "sierpinski">Sierpinski Triangle (15 Points)</a></h2>
+                                            <p>
+                                                In this assignment, you will make a fractal called the <a href = "https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">Sierpinski Triangle</a>.  You will start with three points on the 2D Cartesian plane that form a triangle.  These are parameters that you will send into a void function which does the drawing.  Each point has both an x and a y coordinate, so the points are
+                                                <ul>
+                                                    <li><b>a</b> = (ax, ay)</li>
+                                                    <li><b>b</b> = (bx, by)</li>
+                                                    <li><b>c</b> = (cx, cy)</li>
+                                                </ul>
+                                                Given these three initial points, an algorithm to randomly draw points on the Sierpinski Triangle is as follows:
+                                                <ol>
+                                                    <li>First, draw the point <b>a</b>, and designate this as the last point drawn</li>
+                                                    <li>Randomly choose a point that's either <b>a</b>, <b>b</b>, or <b>c</b>.  Draw a point halfway in between the last point drawn and this randomly chosen point</li>
+                                                    <li>Repeat step 2 for until the chosen number of samples has been drawn.</li>
+                                                </ol>
+                                                The point halfway in between a point <b>p</b> with coordinates (px, py) and a point <b>q</b> with coordinates (qx, qy) can be computed by averaging the coordinates of the two points.  That is, the x-coordinate of the halfway point is (px + qx)/2, and the y-coordinate of the halfway point is (py + qy)/2.
+                                            </p>
+        
+                                            <h3>Numerical Example</h3>
+                                            <p>
+                                                As an example, consider the triangle with points <b>a</b> = (0, 0), <b>b</b> = (1, 0), and <b>c</b> = (1, 1).  Here are the points we draw
+                                                <ol>
+                                                    <li>As always, we first draw <b>a</b></li>
+                                                    <li>Let's say the next randomly chosen point is <b>c</b>.  We'd draw our second point halfway in between <b>a</b> and <b>c</b>, which is at (0.5, 0.5).</li>
+                                                    <li>Let's then say the next point chosen is <b>b</b>.  We'd draw the third point halfway in between (0.5, 0.5) and <b>b</b> = (1, 0), which is at (0.75, 0.25).</li>
+                                                    <li>Let's then say the next point chosen is <b>c</b> again.    We'd then draw the fourth point halfway in between (0.75, 0.25) and <b>c</b> = (1, 1), which is (0.875, 0.625)</li>.  
+                                                </ol>
+                                                The animation below shows these steps visually
+                                            </p>
+                                            <img src = "Example.gif">
+        
+                                            <h2>Code To Write</h2>
+        
+                                            <p>
+                                            You create a file called <code>Triangle.py</code>, and within this file, you should define a function called <code>draw_sierpinski</code> which takes 4 parameters: the three points on the triangle, and the number of points to draw
+        
+                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                import numpy as np
+                                                import matplotlib.pyplot as plt
+                                                
+                                                def draw_sierpinski(a, b, c, n_points):
+                                                """
+                                                This function should draw samples on the Sierpinski Triangle
+                                                which are obtained by simulating the Chaos Game
+                                                Parameters
+                                                ----------
+                                                a: ndarray(2)
+                                                    A 2-element numpy array, where the first element
+                                                    is the x coordinate of point a on the triangle,
+                                                    and the second element is the y coordinate of point a
+                                                b: ndarray(2)
+                                                    A 2-element numpy array, where the first element
+                                                    is the x coordinate of point b on the triangle,
+                                                    and the second element is the y coordinate of point b
+                                                c: ndarray(2)
+                                                    A 2-element numpy array, where the first element
+                                                    is the x coordinate of point c on the triangle,
+                                                    and the second element is the y coordinate of point c
+                                                n_points: int
+                                                    The number of points to sample in the fractal
+                                                """
+
+                                                    ## TODO: Fill this in
+                                            ]]></script>   
+                                            
+                                            This function takes in the x and y coordinates of 3 points on the triangle, as well as the number of points we aim to draw.  To generate a random number that's either 0, 1, or 2, you can use the code
+                                            
+                                            <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                np.random.randint(3)
+                                            ]]></script>   
+        
+                                            You can use this to help you choose the next reference point that's either a, b, or c (<code>if</code> and <code>elif</code> statements will help here).  Below is what the output should look like for a couple of different calls to your function if it is working properly.  You can copy and paste these lines after your function, and you should see the result below
+                                            </p>
+        
+                                            <h3>Code Example 1</h3>
+                                            <p>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    a = np.array([0, 0])
+                                                    b = np.array([1, 0])
+                                                    c = np.array([0, 1])
+                                                    draw_sierpinski(a, b, c, 10000)
+                                                    
+                                                ]]></script>   
+        
+                                                <img src = "Sierpinski1.svg">
+                                            </p>
+
+                                            
+        
+                                            <h3>Code Example 2</h3>
+                                            <p>
+                                                Here's another example of code you could run, followed by the result
+                                            </p>
+                                            <p>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    a = np.array([0, 0])
+                                                    b = np.array([1, 0])
+                                                    c = np.array([0.5, 1])
+                                                    draw_sierpinski(a, b, c, 10000)
+
+                                                ]]></script>   
+        
+                                                <img src = "Sierpinski2.svg">
+                                            </p>
+                                        
+                                            <div id = "tips">
+                                                <h3>Tips</h3>
+                                                <ul>
+                                                <li>
+                                                To take the average of two points <code>p</code> and <code>q</code>, which are numpy arrays, you can simply type <code>0.5*(p+q)</code>
+                                                </li>
+                                                </ul>
+            
+            
+                                            </div>
+
+                                
+                                            <HR>
+                                                <h2><a name = "quadfractal">Extra Credit: Quad Fractal (+1.5 Points)</a></h2>
+                                                <p>
+                                                    For extra credit, you may draw another fractal using points on a quadrilateral with points <b>a</b> = (ax, ay), <b>b</b> = (bx, by), <b>c</b> = (cx, cy), and <b>d</b> = (dx, dy).  The steps are very similar to the Sierpinski Triangle steps, with one minor difference, shown in bold below
+                                                </p>
+                                                <ol>
+                                                    <li>First, draw the point <b>a</b>, and designate this as the last point drawn</li>
+                                                    <li>Randomly choose a point that's either <b>a</b>, <b>b</b>, <b>c</b>, or <b>d</b>, <b>as long as it is different from the last point you chose</b> (for instance, if I chose <b>a</b> last time, I must choose either <b>b</b>, <b>c</b>, or <b>d</b> this time).  Draw a point halfway in between the last point drawn and this randomly chosen point</li>
+                                                    <li>Repeat step 2 for until the chosen number of samples has been drawn.</li>
+                                                </ol>
+                
+                                                <p>
+                                                    <b>If you don't keep track of the point you chose last time and just randomly pick one of the four points on the quad each time, you will end up with the picture below, which is not a fractal</b>.  So if you see a result like that, you know you didn't follow the steps properly.
+                                                </p>
+                                                <img src = "Quad_Incorrect.svg">
+                
+                                                <h2>Code To Write</h2>
+                
+                                                <p>
+                                                You should create a new file called <code>Quad.py</code>.  This file should contain a function <code>draw_quad</code> which takes as parameters the x and y coordinates of 4 points on a quadrilateral, as well as the number of points to draw.  Try calling your function with points sampled on a square, for example:
+                                                </p>
+                
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    a = np.array([0, 0])
+                                                    b = np.array([1, 0])
+                                                    c = np.array([1, 1])
+                                                    d = np.array([0, 1])
+                                                    draw_quad(a, b, c, d, 10000)
+
+                                                ]]></script>   
+                                                <p>
+                                                    The result should look something like this:
+                                                </p>
+                                                <img src = "Quad.svg">
+                
+                                                <div id = "tips">
+                                                    <h3>Tips</h3>
+                                                    <ul>
+                                                    <li>
+                                                    Since you're starting from scratch, you should use <code>Triangle.py</code> as an example of how to get the imports correct.  The order of your parameters should also be similar, you just need two more coordinates than before to include the fourth point.
+                                                    </li>
+                                                    </ul>
+                
+                
+                                                </div>
+                                            <HR>
+                                                <h2><a name = "extracredit">Extra Credit: Sierpinski Tetrahedron (+1.5 Points)</a></h2>
+                
+                                                <p>
+                                                    The rules for generating a Sierpinski Triangle generalize naturally to higher dimensions.  So it is possible to make a <a href = "https://www.think-maths.co.uk/sites/default/files/2018-01/think_maths_-_sierpinski_tetrahedron_worksheet.pdf">Sierpinski Tetrahedron</a> by choosing 4 non-coplanar points in 3D and running the exact same algorithm, choosing one of the four points at random to which to go halfway.  To get extra credit, you should simulate this by drawing a bunch of small spheres at different locations in <a href = "https://vpython.org/">vpython</a>.  Here are two screenshots of what this should look like if you do it correctly:
+                                                </p>
+                
+                                                <img src = "Tet1.png"><BR><BR>
+                                                <img src = "Tet2.png">
+                
+                                                
+
+                                    </div>
+                            </div>
+                        </div>
+                        
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

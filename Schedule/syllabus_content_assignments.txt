@@ -1,0 +1,87 @@
+<a href = "../Assignments/HW0">Homework 0: Warmup</a> Out
+
+2020-01-22
+Homework 0 Due
+
+2020-01-26
+<a href = "../Assignments/HW1a">Homework 1a: linspace and sinusoids</a> out
+
+2020-01-29
+Homework 1a Due
+
+2020-02-02
+<a href = "../Assignments/HW1_AudioProcessing">Homework 1: Audio Processing</a> Out
+
+2020-02-03
+Homework 1 Due
+
+2020-02-12
+<HR><a href = "../Assignments/HW2_Steganography">Homework 2: Steganography</a> Out
+
+2020-02-12
+<a href = "../Assignments/HW3a_LeapYears">HW3a: Gregorian Leap Years</a> Out
+
+2020-02-18
+Homework 2 Due
+
+2020-02-19
+<HR><a href = "../Assignments/HW3b_ChaosGame">HW3b: The Chaos Game</a> Out
+
+2020-02-19
+Homework 3a Due
+
+2020-02-24
+Homework 3b Due
+
+2020-02-28
+<a href = "../Assignments/HW4_NBodyProblem">Homework 4: N-Body Problem</a> Out
+
+2020-02-29
+Homework 4 Due
+
+2020-03-06
+<a href = "../Assignments/HW4b_EpidemicSpreading">Homework 4b: Epidemic Spreading</a> Out
+
+2020-03-17
+Homework 4b Due
+
+2020-03-24
+Homework 5: <a href = "../Assignments/HW5_TweetWrangling">Tweet Wrangling</a> Out
+
+2020-03-27
+Homework 5 Due
+
+2020-04-05
+<a href = "../Assignments/HW6_MovieReviews">Homework 6: Movie Reviews</a> Out
+
+2020-04-08
+Homework 6 Due
+
+2020-04-20
+<a href = "../Assignments/HW7_NeedlemanWunsch">Homework 7: Needleman-Wunsch</a> Out
+
+2020-4-24
+Homework 7 Due<HR>
+
+2020-05-04
+<a href = "../Assignments/HW8_MarkovHybrids">Homework 8: Markov Hybrids</a> Out
+
+2020-05-04
+Homework 8 Due
+
+2020-05-08
+Final Project Video / Slide Due
+
+2020-05-12
+Final Project Feedback Due
+
+2020-05-13
+Final Project Due
+
+2020-05-14
+Final Project Initial Proposal Due
+
+2020-03-06
+Final Project Milestone
+
+2020-04-24

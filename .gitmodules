@@ -1,0 +1,9 @@
+[submodule "Lectures/ImageProcessingClass"]
+	path = Lectures/ImageProcessingClass
+	url = https://github.com/Ursinus-IDS301-S2020/ImageProcessingClass.git
+[submodule "Lectures/Week1Class"]
+	path = Lectures/Week1Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week1Class.git
+[submodule "Lectures/Week2Class"]
+	path = Lectures/Week2Class
+	url = https://github.com/Ursinus-IDS301-S2020/Week2Class.git

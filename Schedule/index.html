@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Schedule</h1>
+									</header>
+									<p>
+										Outlined below is the schedule for the course, including lecture topics and assignment due dates.  <b>All assignments are due at 11:59PM on the date specified</b>.  The specific dates of different topics are subject to change based on the pace at which we go through the course.
+									</p>
+
+									<p>
+										Since Python is so popular, there has been a ton of community work across many projects.  Therefore, a big part of this course will be learning how to leverage work that others have already done, instead of re-inventing the wheel ourselves, by using ``software libraries'' for different tasks.  I have indicated the software libraries we will be using in the course at the beginning of each section.
+									</p>
+									<BR><BR>
+									
+									<center>
+									<table width = "100%" cellpadding = 4>
+									
+									<tr><td>Lecture</td><td><center>Date</center></td><td>Lectures (click for notes)</td><td>Readings/Links</td><td>Assignments/Deliverables</td></tr>
+<tr><td colspan = "5"><h2><b>Unit 1: Audio/Image Processing</b></h2><p>We will kick off the course by discussing how computers represent audio and images and by doing some fun manipulations of these signals.  This will give us an excuse to start getting familiar with scientific Python, and particularly the <a href = "https://numpy.org/">numpy library</a>.  At this point in the course, we can mostly look at Python as a glorified calculator.  Aside from basic arithmetic operations and plotting, we will dip our toes into writing functions, which will allow us to organize our code better when performing more complex tasks.<h3>Science Topics</h3><ul><li><u>Audio processing</u>: Audio sampling, sinusoids, noise, comb filters, aliasing, the Discrete Fourier Transform, convolution</li><li><u>Image Processing:</u> Salt and papper noise, dithering, Moiré patterns, linear filters, histogram equalization</li></ul><h3>Programming Topics</h3><ul><li>Intro to 1D/2D numpy array manipulations</li><li>Introduction to plotting via matplotlib</li><li>Intro to function writing and usage</li></ul><h3>Libraries Introduced</h3><ul><li><a href = "https://numpy.org/">numpy</a>, <a href = "https://scipy.org/">scipy</a>, <a href = "https://matplotlib.org/">matplotlib</a>, <a href = "https://scikit-image.org/">skimage</a></li></ul><h3>Textbook Reading</h3>Harvey Mudd <i>CS For All</i> <a href = "CSForAll/Ch2.html">Ch. 2</a></p></td></tr>
+<tr><td>1</td><td>Wed 1/22/2020</td><td>Course Sneak Preview</td><td><ul><li><a href = "https://docs.google.com/presentation/d/1EqGUe0tpxp_O-QZz4-EdqBHUZ3wZ1pZf4JR3Q7f0U5w/edit?usp=sharing">Slides from today</a></li></ul></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW0">Homework 0: Warmup</a> Out
+</td></tr>
+<tr><td></td><td>Sun 1/26/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 0 Due
+</td></tr><tr><td>2</td><td>Mon 1/27/2020</td><td>Software Environment, Arithmetic Operations, Variable Naming, Begin Lists</td><td><ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#getting-started-in-python">2.2</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week1Class">Code for class week 1</a></li></ul></td><td></td></tr>
+<tr><td>3</td><td>Wed 1/29/2020</td><td>List slicing, Numpy Arrays / Plotting</td><td><ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#more-data-from-numbers-to-strings">2.3</a>, <a href = "CSForAll/Ch2.html#lists">2.4</a></li><li><a href = "https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/">Reference on array slicing</li></ul></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW1a">Homework 1a: linspace and sinusoids</a> out
+</td></tr>
+<tr><td></td><td>Sun 2/2/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 1a Due
+</td></tr><tr><td>4</td><td>Mon 2/3/2020</td><td>Audio Processing: Sinusoids</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week2Class">Code for class week 2</a></li> </ul></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW1_AudioProcessing">Homework 1: Audio Processing</a> Out
+</td></tr>
+<tr><td>5</td><td>Wed 2/5/2020</td><td>Functions, Echoes/Convolution, Noise, Comb Filters</td><td><ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#functioning-in-python">2.5</a></li></ul></td><td></td></tr>
+<tr><td>6</td><td>Mon 2/10/2020</td><td>The Discrete Fourier Transform, Begin Image Processing</td><td><ul><li><a href = "https://en.wikipedia.org/wiki/Sawtooth_wave">Wikipedia page on sawtooth waves</a></li></ul></td><td></td></tr>
+<tr><td>7</td><td>Wed 2/12/2020</td><td>Image Processing: 2D Arrays / Grids, Moiré Patterns, Quantization/Dithering</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/ImageProcessingClass">Image Processing Code for Class</a></li><li><a href = "https://en.wikipedia.org/wiki/Dither">Wikipedia Page on Dithering</a></li><li><a href = "https://www.youtube.com/watch?v=xAoljeRJ3lU">The design of matplotlib colormaps</a></li></ul></td><td bgcolor=#f4e6e7>Homework 1 Due
+<HR><a href = "../Assignments/HW2_Steganography">Homework 2: Steganography</a> Out
+</td></tr>
+<tr><td colspan = "5"><h2><b>Unit 2: Particle Simulations</b></h2><p>In this unit, we will begin to explore some fundamental programming paradigms that will turn our computer into much more than a basic calculator.  In particular, we will study "if/else" statements, which are decisions made at runtime.  We will also begin loops, which will make it much easier to repeat the same code over and over again with minor variations.  Both of these things will allow us to begin exploring some interesting applications, including <a href = "https://en.wikipedia.org/wiki/Fractal">fractal generation</a> and simulations of celestial bodies. <h3>Science Topics</h3><ul><li>Fractals, the n-body problem, flocking simulations, chaos</li></ul><h3>Programming Topics</h3><ul><li>Loops, if statements, parallel arrays</li></ul><h3>Libraries Introduced</h3><ul><li><a href = "https://vpython.org/">vpython</a></li></ul></p></td></tr>
+<tr><td>8</td><td>Mon 2/17/2020</td><td>Spyder, If Statements</td><td><ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#making-decisions">2.6</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week4Class">Code for this week</a></li></ul></td><td></td></tr>
+<tr><td></td><td>Tue 2/18/2020</td><td></td><td></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW3a_LeapYears">HW3a: Gregorian Leap Years</a> Out
+</td></tr><tr><td>9</td><td>Wed 2/19/2020</td><td>Boolean Statements, Begin Loops</td><td><ul><li><i>CS For All</i> <a href = "CSForAll/Ch5.html#repeated-tasks-loops">5.3</a></li></ul></td><td bgcolor=#f4e6e7>Homework 2 Due
+<HR><a href = "../Assignments/HW3b_ChaosGame">HW3b: The Chaos Game</a> Out
+</td></tr>
+<tr><td>10</td><td>Mon 2/24/2020</td><td>While Loops: Epoch Time, The 10 Heads Problem</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week5Class">Code for this week</a></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown 10 Heads Experiment</a></li></ul></td><td bgcolor=#f4e6e7>Homework 3a Due
+</td></tr>
+<tr><td>11</td><td>Wed 2/26/2020</td><td>VPython Animations, Euler Steps for Vector Simulations of Gravitation</td><td></td><td></td></tr>
+<tr><td></td><td>Fri 2/28/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 3b Due
+</td></tr><tr><td></td><td>Sat 2/29/2020</td><td></td><td></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW4_NBodyProblem">Homework 4: N-Body Problem</a> Out
+</td></tr><tr><td>12</td><td>Mon 3/2/2020</td><td>Continue Gravitational Simulations / VPython, Begin Binary Star Simulation</td><td></td><td></td></tr>
+<tr><td>13</td><td>Wed 3/4/2020</td><td>Finish Binary Star Simulation, Chaos, The Logistic Map</td><td></td><td></td></tr>
+<tr><td></td><td>Fri 3/6/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 4 Due
+</td></tr><tr><td></td><td>Fri 3/6/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Final Project Initial Proposal Due
+</td></tr><tr><td>--</td><td>Mon 3/9/2020</td><td>Spring Break</td><td></td><td>Enjoy!</td></tr>
+<tr><td>--</td><td>Wed 3/11/2020</td><td>Spring Break</td><td></td><td>Enjoy!</td></tr>
+<tr><td>14</td><td>Mon 3/16/2020</td><td>More spring break, courtesy of COVID-19</td><td></td><td></td></tr>
+<tr><td></td><td>Tue 3/17/2020</td><td></td><td></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW4b_EpidemicSpreading">Homework 4b: Epidemic Spreading</a> Out
+</td></tr><tr><td>15</td><td>Wed 3/18/2020</td><td>More spring break, courtesy of COVID-19</td><td></td><td></td></tr>
+<tr><td colspan = "5"><h2><b>Unit 3: Data Wrangling / Data Analysis</b></h2><p>In this unit, we will learn how to gather and organize data in Python.  This will include a brief foray into machine learning to discuss learning from examples, also known as <a href = "https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a>.  We will use this to guess the genre of a clip of music, to figure out the sentiment of a movie review, and to automatically transcribe images of digits.<h3>Science Topics</h3><ul><li>Web scraping, features for natural languages processing</li><li>Audio feature design</li><li>Supervised learning with k-nearest neighbors</li><li>Dimension reduction for visualization</li><li>Ridge regression and logistic regression</li></ul><h3>Programming Concepts</h3><ul><li>File I/O</li><li>Strings, dictionaries</li><li>Practice with functions, loops, and numpy arrays</li><li>Sparse matrices</li></ul><h3>Libraries Introduced</h3><ul><li><a href = "http://librosa.github.io/">librosa</a>, <a href = "https://scikit-learn.org/">scikit-learn</a>, <a href = "https://docs.python.org/2/library/glob.html">glob</a></li></ul></p></td></tr>
+<tr><td>16</td><td>Mon 3/23/2020</td><td>Python Dictionaries, Pickling, Wrangling Twitter Data</td><td><ul><li>Videos for This Week <ul><li><a href = "https://web.microsoftstream.com/video/ff38746f-89d4-4d85-80c6-dfb3014908e4">Python Dictionaries</a></li></ul></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week8Class">Code for this week</a></li><li><a href = "https://web.microsoftstream.com/video/f19cb727-2d55-4b6e-a583-4eb9f810cb34">Lecture recording from today</a></li><li><a href = "https://www.w3schools.com/python/python_dictionaries.asp">w3schools Dictionary Reference</a></li><li><a href = "https://www.geeksforgeeks.org/python-dictionary/">Geeks for Geeks Dictionary Reference</a></li></ul></td><td></td></tr>
+<tr><td></td><td>Tue 3/24/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 4b Due
+</td></tr><tr><td>17</td><td>Wed 3/25/2020</td><td>Python Dictionaries, Pickling, Wrangling Twitter Data</td><td><ul><li><a href = "https://web.microsoftstream.com/video/a75fa6b9-c972-42b9-8e4d-989dc8e5e197">Lecture recording from today</a></li></ul></td><td></td></tr>
+<tr><td></td><td>Fri 3/27/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 5: <a href = "../Assignments/HW5_TweetWrangling">Tweet Wrangling</a> Out
+</td></tr><tr><td>18</td><td>Mon 3/30/2020</td><td>High Dimensional Data: Pixel Image Embeddings, Audio Features, Dimension Reduction, Multidimensional Scaling</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week9Class">Code for this week</a></li>  <li><a href = "https://web.microsoftstream.com/video/baab2a4c-cf34-4fec-a2a6-7fa86cddac44">Lecture Recording from Today</a></li><li><a href = "http://www.covers1000.net/GraphDitty/">Graph Ditty</a> Dimension Reduced Music Visualizer</li><li><a href = "https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d?gi=e44a7bac7a75">MNIST Image Dataset</a></li></ul></td><td></td></tr>
+<tr><td>19</td><td>Wed 4/1/2020</td><td>Finish multidimensional scaling, argsort/argmin, dictionaries practice</td><td><ul><li><a href = "https://web.microsoftstream.com/video/1aabba83-1f96-44e3-b8be-615e32a4e4aa">Lecture recording from Today</a></li></td><td></td></tr>
+<tr><td></td><td>Sun 4/5/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 5 Due
+</td></tr><tr><td>20</td><td>Mon 4/6/2020</td><td>Nearest Neighbors, Digit Classification, Audio Genre Classification</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week10Class/archive/master.zip">Code from this week</a></li><li><a href = "https://web.microsoftstream.com/video/ac357e3b-da66-4355-a2a0-40ce42ca09bf">Lecture Recording from Today</a></li><li><a href = "https://scikit-learn.org/stable/modules/neighbors.html">sklearn nearest neighbors documentation</a></li></ul></td><td></td></tr>
+<tr><td>21</td><td>Wed 4/8/2020</td><td>Ridge Regression, Text Vectorization, Sparse Matrices</td><td><ul><li><a href = "https://web.microsoftstream.com/video/84424f26-e395-49fd-b489-19e5769cf2bc">Lecture Recording from Today</a></li><li><a href = "https://www.kaggle.com/mohansacharya/graduate-admissions">Graduate Admissions Dataset</a></li><li><a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV">sklearn ridge regression documentation</a></li></ul></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW6_MovieReviews">Homework 6: Movie Reviews</a> Out
+</td></tr>
+<tr><td colspan = "5"><h2><b>Unit 4: Sequences</b></h2><p>In this unit, we will study algorithms that deal with sequences in text and audio.  In doing so, we will solidify our understanding of functions and loops by exploring a class of algorithms known as <i>dynamic programming algorithms</i>, which are algorithms that cleverly reuse computation to run more efficiently.  This will unlock a series of neat applications, including genome similarity search (aka what's my ancestry?) and audio synchronization (i.e. how to we line up two people singing the same song but at different rates?).  After this, we will study <i>Markov Chains</i> and use them to create a program that synthesizes text in a particular style.  As the most complex assignment yet, it will require the notion of a "class" (custom variable type with functions) to organize code effectively.<h3>Science Topics</h3><ul><li>Efficient algorithm design with dynamic programming</li><li>Genetic similarity search strategies</li><li>Sequential probabalistic modeling and sampling</li><li>Audio synchronization</li></ul><h3>Programming Concepts</h3><ul><li>Recursive functions</li><li>Classes and objects</li></ul><h3>Libraries Introduced</h3><ul><a href = "https://github.com/bmcfee/pyrubberband">pyrubberband</a></li></ul></p></td></tr>
+<tr><td>22</td><td>Mon 4/13/2020</td><td>Recursion, The Dynamic Programming Concept</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week11Class/">Code from this week</a></li><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#humans-chimpanzees-and-spell-checkers">2.1</a>, <a href = "CSForAll/Ch2.html#recursion">2.7</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.8</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.9</a>, <a href = "CSForAll/Ch2.html#use-it-or-lose-it">2.10</a></li><li><a href = "https://web.microsoftstream.com/video/ff420cb0-59be-4f27-8e81-50a56b6e3860">Lecture Recording from Today</a></li><li><a href = "https://web.microsoftstream.com/video/35b419f7-91f8-4f3b-b6f0-643d4097d7f8">Followup video on recursion and dynamic programming</li><li><a href = "https://web.microsoftstream.com/video/ae2f2839-fa4c-46ad-a438-8a88524ac652">Looping through lists review</a></li></ul></td><td></td></tr>
+<tr><td>23</td><td>Wed 4/15/2020</td><td>Edit Distance</td><td><ul><li>CS For All <a href = "CSForAll/Ch2.html#edit-distance">2.11</a></li><li><a href = "https://web.microsoftstream.com/video/a3078fe5-af47-471c-b2e4-e1a772294821">Lecture video from today</a></li></ul></td><td></td></tr>
+<tr><td>24</td><td>Mon 4/20/2020</td><td>Dynamic Programming Solutions To Edit Distance, Needleman-Wunsch</td><td><ul><li><a href = "https://web.microsoftstream.com/video/b9cc6b3b-b16d-48e6-a213-2b36653c82c2">Lecture Recording from Today</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week12Class">Code from this week</a></li></ul></td><td bgcolor=#f4e6e7>Homework 6 Due
+</td></tr>
+<tr><td>25</td><td>Wed 4/22/2020</td><td>Backtracing Alignment Tables, Dynamic Time Warping for Audio Alignment</td><td><ul><li><a href = "https://web.microsoftstream.com/video/a7813db5-36c7-4915-b495-338a0b992542">Lecture video from today</a></li><li><a href = "../Lectures/Week12Class/DTW2D.html">Live DTW Demo</a></li><li><a href = "../Lectures/Week12Class/sync_bad.mp3">Unsynchronized audio</a></li><li><a href = "../Lectures/Week12Class/sync.mp3">Synchronized with DTW</a></li></ul></td><td></td></tr>
+<tr><td></td><td>Fri 4/24/2020</td><td></td><td></td><td bgcolor=#f4e6e7><a href = "../Assignments/HW7_NeedlemanWunsch">Homework 7: Needleman-Wunsch</a> Out
+</td></tr><tr><td></td><td>Fri 4/24/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Final Project Milestone
+</td></tr><tr><td>26</td><td>Mon 4/27/2020</td><td>Classes and Objects</td><td><ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week13Class">Code for this week</a></li><li><a href = "https://web.microsoftstream.com/video/a4ac674e-6b98-4be2-8209-a611791633a3">Lecture Video from Today</a></li></ul></td><td></td></tr>
+<tr><td>27</td><td>Wed 4/29/2020</td><td>Markov Chains on Letters</td><td><ul><li><a href = "https://setosa.io/blog/2014/07/26/markov-chains/">Markov Chains Interactive Demo</a></li><li><a href = "https://web.microsoftstream.com/video/12f27885-96cf-43db-9f5d-04101454c128">Lecture Recording from Today</a></li></ul></td><td></td></tr>
+<tr><td>28</td><td>Mon 5/4/2020</td><td>Markov Chains And N-Grams</td><td><ul><li><a href = "https://web.microsoftstream.com/video/64acc407-2fa1-46c4-b044-ccb8d8ebcc7a">Lecture video from today</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week13Class/commit/9aa453587e930775f1712b404e73a50df79f73ea">Code from characters to n-grams</a></li></ul></td><td bgcolor=#f4e6e7>Homework 7 Due<HR>
+<a href = "../Assignments/HW8_MarkovHybrids">Homework 8: Markov Hybrids</a> Out
+</td></tr>
+<tr><td>29</td><td>Wed 5/6/2020</td><td>Course Wrapup / Raffle</td><td></td><td></td></tr>
+<tr><td></td><td>Fri 5/8/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Homework 8 Due
+</td></tr><tr><td>30</td><td>Mon 5/11/2020</td><td>No class</td><td></td><td></td></tr>
+<tr><td></td><td>Tue 5/12/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Final Project Video / Slide Due
+</td></tr><tr><td>31</td><td>Wed 5/13/2020</td><td>No class</td><td></td><td bgcolor=#f4e6e7>Final Project Feedback Due
+</td></tr>
+<tr><td></td><td>Thu 5/14/2020</td><td></td><td></td><td bgcolor=#f4e6e7>Final Project Due
+</td></tr>						</table>
+
+
+
+						</div>
+					</div>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../index.html">General</a></li>
+										<li><a href = "../Software/index.html">Software</a></li>
+										<li><a href = "../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>			
+			
+            <!-- Start of StatCounter Code -->
+            <script type="text/javascript">
+            var sc_project=7309088; 
+            var sc_invisible=1; 
+            var sc_security="f655b56d"; 
+            </script>
+            <script type="text/javascript"
+            src="http://www.statcounter.com/counter/counter.js"></script>
+            <noscript><div class="statcounter"><a title="free hit counter"
+            href="http://statcounter.com/" target="_blank"><img class="statcounter"
+            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
+            counter"></a></div></noscript>
+            <!-- End of StatCounter Code -->
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

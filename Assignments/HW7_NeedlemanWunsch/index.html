@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW7: Needleman-Wunsch (20 Points)</h1>
+                                        <h3>Due Monday 5/4/2020</h3>
+									</header>
+                                    <script src = "StringMatching.js"></script>
+									<div id="page-content">
+									    
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this assignment is to get you practice with recursion and dynamic programming.  By the end of this assignment, you will have code that tells you an optimal set of steps it takes to match to strings with variable costs for character deletion and substitution.
+                                        </p>
+
+                                        <p>
+                                        <p><a name = "readme">What to submit</a>: <b>When you are finished, you should submit a file called <code>Needleman.py</code> to Canvas</b>, along with answers to the following as a comment on Canvas:
+                                        </p>
+                                        <p>
+                                            <ul>
+                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                                <li>
+                                                    Are you using up any grace points to buy lateness days?  If so, how many?
+                                                </li>
+                                                <li>
+                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                                </li>
+                                                <li>
+                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                                </li>
+                                                <li>
+                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                                </li>
+                                            </ul>
+
+
+                                        <HR>
+                                    <h2>The Problem</h2>
+                                    <p>
+
+
+                                        <p>
+                                            In class, we talked about how to compute the edit distance efficiently by using dynamic programming.  In the edit distance, we seek to minimize a sequence of deletions and substitutions that turn one string into another, and the cost of substituting one letter for the other and deleting a character are both 1, regardless of the letters.  To address this limitation, there is a variant of edit distance known as <i>Needleman-Wunsch</i>, in which the costs can change depending on what characters are involved.  By convention, we actually switch from a "minimizing cost" mindset to a <b>maximizing score</b> mindset (for those curious, this is to make it easier to do <a href = "https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm">subsequence matching</a> with variable costs).
+                                        </p>
+
+                                        <p>
+                                            To help you explore examples of Needleman-Wunsch scoring, I have provided a live demo app below that a former independent study study Liz Dempsey made in the course of our research on sequence matching.  In the default example, we have an alphabet of two letters <b>a</b> and <b>b</b>, and the scores are as follows
+                                            <ul>
+                                                <li>A -1 penalty for deleting <b>a</b></li>
+                                                <li>
+                                                    A -2 penalty for deleting <b>b</b>
+                                                </li>
+                                                <li>
+                                                    A -3 penalty for swapping an <b>a</b> for a <b>b</b> or a <b>b</b> for an <b>a</b>
+                                                </li>
+                                                <li>
+                                                    A +2 score for matching an <b>a</b> to an <b>a</b>
+                                                </li>
+                                                <li>
+                                                    A +3 score for matching a <b>b</b> to a <b>b</b>
+                                                </li>
+                                            </ul>
+
+                                            All of this information is specified in a dictionary, which you can see in the "pairwise costs" menu.  When you hit "match strings," this program will run the Needleman-Wunsch algorithm to fill out the dynamic programming table.  It will also perform a backtracing to find one of the optimal-cost sequence of edit operations.  Play around with different examples and explore the results until you feel comfortable.
+                                        </p>
+
+                                        <h2><a name = "applet">Needleman-Wunsch Interactive Applet</a></h2>
+                                        <table cellpadding=5>
+                                            <tr><td><h3>String 1</h3></td><td><input type="text" id = "string1" size="20"></input></td></tr>
+                                            <tr><td><h3>String 2</h3></td><td><input type="text" id = "string2" size="20"></input></td></tr>
+                                            <tr><td><h3>Alphabet</h3></td><td><input type="text" id = "alphabet" size="3"></td></tr>
+                                            <tr><td><h3>Pairwise<BR>Costs</h3></td><td><textarea id="costs" cols="60" rows = "5"></textarea></td></tr>
+                                            <tr><td colspan="2"><button type = "button" onclick = "call_matchStrings()" id="matchStrings">Match Strings</button>
+                                            <tr><td><h3>Optimal Matching Score</h3></td><td><input type="text" id = "matchingscore" size="3"></td></tr>
+                                        </table>
+                                    
+                                        <p id = "backtracing">
+                                    
+                                        </p>
+                                    
+                                        <table id="mytable" border = "1" cellpadding="5">
+                                        </table>
+                                    
+                                        <script>
+                                            var string1_text = document.getElementById("string1");
+                                            string1_text.value = "aabaab";
+                                            var string2_text = document.getElementById("string2");
+                                            string2_text.value = "ababaa";
+                                            var alphabet_text = document.getElementById("alphabet");
+                                            alphabet_text.value = "ab";
+                                            var costs_text = document.getElementById("costs");
+                                            costs_text.value = "{\"a\":-1, \"b\":-2, \"ab\":-3, \"aa\":2, \"bb\":3}";
+                                            var matchingscore_text = document.getElementById("matchingscore");
+                                            var returnValues;
+                                    
+                                            function call_matchStrings() {
+                                                let string1 = string1_text.value;
+                                                let string2 = string2_text.value;
+                                                let alphabet = alphabet_text.value;
+                                                let costs = JSON.parse(costs_text.value);
+                                                console.log(costs); //This outputs the object which holds the costs
+                                                returnValues = matchStrings(string1, string2, alphabet, costs);
+                                                matchingscore_text.value = returnValues.score;
+                                                backtrace_list = returnValues.backtrace;
+                                                
+                                                var backtracing = document.getElementById("backtracing");
+                                                backtracing.innerHTML = "Results of the backtracing: ";
+                                    
+                                                for(var i = 0; i < backtrace_list.length; i++){
+                                                    backtracing.innerHTML += ("<BR>" + backtrace_list[i]);
+                                                }
+                                            }
+                                    
+                                            
+                                        </script>
+
+                                    </p>
+                                    
+                                    <h2>Code To Write</h2>
+                                    <p>
+                                        Your job in this assignment is to create a Python program that performs the Needleman-Wunsch matching.  You should create a method that takes in two strings, along with a dictionary that specifies the scores of different operations, as in the program above.  You should only need to specify the cost of a mismatch once in a dictionary (for instance, "ab" should have the same value as "ba", so your program should work if only one of them is specified).
+                                    </p>
+
+                                    <p>
+                                        Your method should return both the optimal cost (<b>15 points</b>), as well as an example of an optimal sequence of edit operations obtained by backtracing (<b>5 points</b>).  It will be <b>+5</b> points of extra credit to return <i>all possible</i> sequences of optimal edit operations if there are ties.
+                                    </p>
+
+                                    <div id = "tips">
+                                        <h3>Tips</h3>
+                                        <ul>
+                                            <li>
+                                                You can stick pretty closely to the <a href = "https://github.com/Ursinus-IDS301-S2020/Week12Class/blob/4ad2932cee34a683ee68bd65e1b9c71d917b16c2/edit.py#L140">iterative code we wrote for edit distance in class</a>.  You'll just need to use different costs, and it's a maximization instead of a minimization.
+                                            </li>
+                                            <li>
+                                                Use the <a href = "#applet">above applet</a> to check your answers on different examples.
+                                            </li>
+                                            <li>
+                                                The first row and the first column will be different from what they were in the edit distance, so be careful with this.  Look at what they are in the example.
+                                            </li>
+                                            <li>
+                                                When you are considering the left path, for example, that's like saying you've deleted the character in the second string, so you'll have to figure out what character that is and its cost.
+                                            </li>
+                                            <li>
+                                                Recall that string access works the same way as array access.  For instance
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    s = "ab"
+                                                    s[0] # This is an "a"
+                                                    s[1] # This is a "b"
+                                                ]]></script>  
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+
+                                    </div>
+
+                            </div>
+                        </div>
+                        
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

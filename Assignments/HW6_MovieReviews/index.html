@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW6: Movie Reviews (20 Points)</h1>
+                                        <h3>Due Monday 4/20/2020</h3>
+									</header>
+
+									<div id="page-content">
+									    
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this assignment is to get you practice with Python dictionaries and machine learning for natural language processing.  By the end of this assignment, you will have a system for automatically determining whether a movie review is positive or negative.  <a href = "https://github.com/Ursinus-IDS301-S2020/HW6_MovieReviews/archive/master.zip">Click here</a> to download the starter code for this assignment.
+                                        </p>
+
+                                        <p>
+                                        <p><a name = "readme">What to submit</a>: <b>When you are finished, you should submit a file <code>MovieReviews.py</code> to Canvas</b>, along with answers to the following as a comment on Canvas:
+                                        </p>
+                                        <p>
+                                            <ul>
+                                                <li>
+                                                    Which two movie reviews did you use in <a href = "#part3">part 3</a>?  What scores did you get?
+                                                </li>
+                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                                <li>
+                                                    Are you using up any grace points to buy lateness days?  If so, how many?
+                                                </li>
+                                                <li>
+                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                                </li>
+                                                <li>
+                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                                </li>
+                                                <li>
+                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                                </li>
+                                            </ul>
+
+
+                                        <HR>
+                                        <h2>The Problem</h2>
+                                            <p>
+                                                In class, we have seen that if we can "vectorize" our data by giving it coordinates, we can measure distances between data points in a meaningful way.  We used this both to visualize data and to do <i>supervised learning</i>, or teaching the computer how to categorize data based on examples.
+                                            </p>
+                                            <p>
+                                                In this assignment, you will do supervised learning using a vectorized representation of text.  Given a collection of 1000 positive reviews and 1000 negative movie reviews from the early 2000s (<a href = "http://www.cs.cornell.edu/people/pabo/movie%2Dreview%2Ddata/">citation</a>), you will train a model to tell the difference between negative and positive reviews.  You will examine this model to see what telltale words are for positive and negative reviews, and you will then find a movie review of your own that you believe is positive or negative and score it with the model.
+                                            </p>
+                                        
+                                        <h2>Background: Vectorizing Text with Binary Bag of Words (BBOW)</h2>
+
+                                            <p>
+                                                When we had the images of the digits, it was straightforward, since every image had the same number of pixels, and we treated each pixel as a dimension.  By contrast, it is not immediately obvious how to turn a text document into a vector in the same manner, since the documents in a collection don't necessarily all have the same number of words.  In this assignment, we will be exploring a simple <b>"binary bag of words" (BBOW)</b> approach, in which we completely disregard the order of the words and simply keep track of which words occur in each document.  For example, the phrase "first go left, then go right, then go left, then go right and right again" would simply have the words <code>["go","again", "left", "then", "right", "first", "and"]</code>, in no particular order.  Even though our representation loses all information about the sequence, this works surprisingly well in many natural language processing tasks.
+                                            </p>
+                                                
+                                            <p>
+                                                As usual, we will set up a matrix in which every row is a data point and in which every column is a dimension.  In a BBOW representation, each row corresponds to a document, and each column corresponds to a word.  We call the set of all words across all columns the <b>vocabulary</b> of our representation.  For a particular document, we put a 1 in a column if the corresponding word exists in that document, and a 0 otherwise. To demonstrate a data matrix in a BBOW representation, we show below a limerick by Kaitlyn Guenther in which every "document" is simply a single line of text.  The data matrix then looks like this (where the columns of the vocabulary can be in an arbitrary order, but one which is consistent across documents)
+                                            </p>
+
+                                        <table border=1 cellpadding=5>
+                                            <tr><td>Document</td>
+                                            <td>there</td><td>once</td><td>was</td><td>a</td><td>wonderful</td><td>star</td><td>who</td><td>thought</td><td>she</td><td>would</td><td>go</td><td>very</td><td>far</td><td>until</td><td>fell</td><td>down</td><td>and</td><td>looked</td><td>like</td><td>clown</td><td>knew</td><td>never</td></tr><tr><td>There once was a wonderful star
+                                            </td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td></tr><tr><td>Who thought she would go very far
+                                            </td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td></tr><tr><td>Until she fell down
+                                            </td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td></tr><tr><td>And looked like a clown
+                                            </td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td></tr><tr><td>She knew she would never go far
+                                            </td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>0</h3></center></td><td><center><h3>1</h3></center></td><td><center><h3>1</h3></center></td></tr></table>
+                                            
+
+
+                                        
+
+
+                                    </p>
+                                    
+                                    <h2>Code To Write</h2>
+
+
+                                    <h3>Part 1: BBOW Representation (10 Points)</h3>
+                                    <p>
+                                        In the first part of this assignment, you will create a bag of words representation from a set of all positive and negative reviews.  You should loop through every word in every document (much like you looped through every word in every tweet in the <a href = "../HW5_TweetWrangling/index.html#kmost">last homework</a>) to determine the vocabulary.  You should then build a sparse data matrix with a row for every document and a column for every word in the vocabulary.  You should put a 1 in row <code>i</code> column <code>j</code> if document <code>i</code> contains word <code>j</code>.
+                                    </p>
+
+                                    <h3><a name = "extracredit">Extra Credit (+2)</a></h3>
+                                    <p>
+                                        If you've done this properly, you will end up with a vocabulary with over 50,000 words.  However, each review will only use about 340 of these words on average.  This means that each row has <b>a ton</b> of zeros.  It is wasteful to store all of these zeros in memory, and it also slows down computation.  It's much better to use a data structure known as a <i>sparse matrix</i>, which has a mechanism to only store values that are nonzero.  Thankfully, the <a href = "https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.lil_matrix.html">scipy library</a> in python makes this quite easy.  You can simply initialize a sparse matrix with the code 
+
+                                        <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                            X = sparse.lil_matrix((N, d))
+                                        ]]></script>  
+                                        where <code>N</code> is the number of rows and <code>d</code> is the number of columns.  None of the rest of your code needs to change
+                                       
+
+                                    </p>
+                                        <div id = "tips">
+                                            <h3>Tips</h3>
+                                            <ul>
+                                                <li>
+                                                    To figure out the words in the vocabulary, you can use a dictionary whose key is a lowercase word and whose value is simple "True."  You won't ever need to use the value; you just need to figure out a vocabulary that covers all words across all documents, so they keys of this dictionary are sufficient.
+                                                </li>
+                                                <li>
+                                                    After you create a list of words in the vocabulary, you need to choose which column in your data matrix corresponds to which word.  They can be in any order, but it's probably easiest if you order them the same way they are ordered in the list.  To make it easy to determine the index in the list of each word, you should create a dictionary whose key is the word and whose value is the index of that word in the list.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+                                    <h3>Part 2: Classification Model And Telltale Words (5 Points)</h3>
+                                    <p>
+                                        Once you have the data matrix setup, you can build a model to predict if a review is positive or negative.  As it turns out, most of the words in the vocabulary don't tell us much about whether the review is positive or negative, so most of the dimensions in our vectorization don't matter.  This means that an approach like k-nearest neighbors wouldn't perform very well in this context, since the distance would be swamped by unimportant dimensions.  Instead, we're going to have to do a regression to <i>learn</i> which dimensions are important.
+                                    <p>
+                                        Recall in class that we used <a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV">ridge regression</a> to predict the chance of getting accepted to graduate school based on some independent variables (e.g. GRE score, GPA).   Here, we need to predict a <i>binary variable</i>, which is 1 (positive) or 0 (negative), given the independent variables, which are words in our case.  There is a related type of regression called <a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV">logistic regression</a> which is setup for this binary scenario, and you will use that in this part of the assignment. Assuming you have setup a matrix <code>X</code> as your data matrix, and that the first 1000 rows of <code>X</code> correspond to positive reviews and the last 1000 rows of <code>X</code> correspond to negative reviews, the following code will accomplish this
+                                    </p>
+
+                                        <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                            clf = LogisticRegressionCV(cv=5, random_state=0).fit(X, labels)
+                                            print("Score = ", clf.score(X, labels))
+                                        ]]></script>  
+                                    
+                                    <p>
+                                        The code uses "5-fold cross-validation" to compute the model; that is, it splits the data up into 5 random subgroups, referred to as "folds."  Each fold has 80% of the data, and it trains a model on that 80% and tests on the 20% that's been left out.  The score at the end is a number between 0 and 1 which indicates the fraction of predictions that were correct over all folds.  Amazingly, if you have done this properly, you should get a score of 1, which indicates that this model is nearly perfect on this dataset.
+                                    </p>
+
+                                    <p>
+                                        Once you are at the point where you're getting a score close to 1 for your classification, you can then analyze the model.  If you have <b>N</b> words in your vocabulary (and hence <b>N</b> columns in your data matrix <code>X</code>), then <code>clf.coef_.flatten()</code> contains an array of <b>N</b> weights for each column.  If a weight is positive in a particular column, then it means the corresponding word contributes towards making the review positive.  Conversely, if a particular column is negative, it means the corresponding word contributes towards making the review negative.  <b>To complete this task, print out the 15 words with the largest positive coefficient and the 15 words with the largest negative coefficient</b>.  
+                                    </p>
+
+                                    <h3><a name = "part3">Part 3: Reviews of Your Choice (5 Points)</a></h3>
+                                    <p>
+                                        Now that you have a model, you should apply it to data beyond the training set that you have to see how well it does.  Go out on the internet and find a review that you think is very positive, and find a review that you think is very negative.  Then load each review in and vectorize it  according to your vocabulary.  If there's a word in your review that isn't in the vocabulary of the training set, simply ignore it.
+                                    </p>
+                                    
+                                    <p>Once you have a vectorization, you can see how positive or negative the model says it is.  If your vector is <code>x</code>, you can simply write
+                                        
+                                        <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                            score = np.sum(x*clf.coef_)
+                                        ]]></script>  
+                                        
+                                    This will sum up every weight in the model associated to words that are used.  If the review is positive, you should get a positive number back, and if the review is negative, you should get a negative number back
+                                        
+                                    </p>
+
+
+
+                                    </div>
+
+                            </div>
+                        </div>
+                        
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

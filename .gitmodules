@@ -49,3 +49,6 @@
 [submodule "Assignments/HW4b_EpidemicSpreading/HW4b_EpidemicSpreading"]
 	path = Assignments/HW4b_EpidemicSpreading/HW4b_EpidemicSpreading
 	url = https://github.com/Ursinus-IDS301-S2020/HW4b_EpidemicSpreading.git
+[submodule "Assignments/HW6_MovieReviews/HW6_MovieReviews"]
+	path = Assignments/HW6_MovieReviews/HW6_MovieReviews
+	url = https://github.com/Ursinus-IDS301-S2020/HW6_MovieReviews.git

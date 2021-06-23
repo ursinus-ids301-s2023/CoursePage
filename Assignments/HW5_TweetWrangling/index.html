@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW5: Tweet Wrangling (20 Points)</h1>
+                                        <h3>Due Friday 4/3/2020</h3>
+									</header>
+
+									<div id="page-content">
+									    
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this assignment is to get you practice with Python dictionaries with a very relevant example.  You can start with the <a href = "https://github.com/Ursinus-IDS301-S2020/Week8Class/blob/master/Twitter.py">Twitter.py</a> that we wrote last week and add methods to it.  You will be loading in and examining the file <code><a href = "../../Lectures/Week8Class/trumpSinceElection.dat">trumpSinceElection.dat</a></code>, which holds a list of Donald Trump's tweets since 2016 in dictionary form.
+                                        </p>
+
+                                        <p>
+                                        <p><a name = "readme">What to submit</a>: <b>When you are finished, you should submit a file <code>Twitter.py</code> to Canvas</b> with the methods for each task, along with answers to the following as a comment on Canvas:
+                                        </p>
+                                        <p>
+                                            <ul>
+                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
+                                                <li>
+                                                    Are you using up any grace points to buy lateness days?  If so, how many?
+                                                </li>
+                                                <li>
+                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+                                                </li>
+                                                <li>
+                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+                                                </li>
+                                                <li>
+                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+                                                </li>
+                                            </ul>
+
+                                            <h2><a name = "json">JSON Alternative To Pickle</a></h2>
+                                            <p>
+                                                Some students have reported issues loading the list of dictionaries with <code>pickle</code>.  Since it is just a list of dictionaries with text and numeric keys/values only, it is possible to use a simpler, more universal encoding known as <code>JSON</code>.  <a href = "trumpSinceElection.json">Click here</a> to download the JSON file.  Actually, this link will likely open up the JSON file in your browser, where you can explore the tweets.  You will want to switch to "RAW" and save it to your hard drive as <code>trumpSinceElection.json</code> by right clicking and saying "save file as".  Then, you can load the file with this code
+
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    import json
+                                                    ...
+                                                    tweets = json.load(open("trumpSinceElection.json", "r"))
+                                                    ...
+                                                ]]></script>  
+                                            </p>
+
+                                            <HR>
+                                            <h2>The Problem</h2>
+
+                                            <p>
+                                            In class, we showed how to process Python dictionaries, and that the Twitter API organizes tweets in dictionary form.  In this assignment, you will be digging into Donald Trump's tweets from November 2016 to answer a few questions
+                                            </p>
+                                            
+                                            <h2>Part 1: The kth Most Popular Tweet (6 Pts)</h2>
+                                            <p>
+                                                In the video from last week, we showed how to find Trump's most popular tweet by using numpy's <code><a href = "https://docs.scipy.org/doc/numpy/reference/generated/numpy.argmin.html">argmin</a></code> function (<a href = "https://github.com/Ursinus-IDS301-S2020/Week8Class/blob/1a9239a72b5536e71cc8d5c14c9c30c18c8dcb22/Twitter.py#L37">Click here</a> to review that example).  Numpy also has a function called <code><a href = "https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html">argsort</a></code>.  Look at the documentation for this function, and use it to come up with Trump's <i>k<sup>th</sup></i> most popular tweet, as measured by the number of retweets.  Put your code in a method called <code>find_kth_popular_tweet(tweets, k)</code>.  This method should find and print out the dictionary for this tweet.  For example, the code
+
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    tweets = pickle.load(open("trumpSinceElection.dat", "rb"))
+                                                    find_kth_popular_tweet(tweets, 6)
+                                                ]]></script>  
+
+                                                should output
+
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    {'source': 'Twitter for iPhone', 
+                                                    'text': 'Just spoke to @KanyeWest about his friend A$AP Rocky’s incarceration. I will be calling the very talented Prime Minister of Sweden to see what we can do about helping A$AP Rocky. So many people would like to see this quickly resolved!', 
+                                                    'created_at': 'Fri Jul 19 20:01:47 +0000 2019',
+                                                    'retweet_count': 210186,
+                                                    'favorite_count': 734567,
+                                                    'is_retweet': False, 
+                                                    'id_str': '1152307567634391041'}
+                                                ]]></script>  
+                                            </p>
+
+                                            <div id = "tips">
+                                                <h3>Tips</h3>
+                                                <ul>
+                                                    <li>You sould play around with the <code>argsort</code> function using simple examples that you design by hand, before you apply it to the more complicated scenario with tweets.  By default, this method sorts things in ascending order.  Somehow, you will need to get them in descending order</li>
+                                                    <li>
+                                                        Be careful with zero-indexing.  The 5th most popular tweet would really be at index 4 in a sorted list
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <p>
+                                               <h3>Note for the curious</h3>
+                                               Since we only need the kth largest tweet, technically sorting everything is overkill.  For those familiar, sorting <code>N</code> items can be accomplished in <code>O(N log N)</code> steps optimally.  However, an operation known as a <i>k-partition</i> can be used to separate out the smallest <code>k</code> elements of a list in only <code>O(N)</code> time.  One can use numpy's <a href = "https://docs.scipy.org/doc/numpy/reference/generated/numpy.argpartition.html">argpartition</a> method to separate out the maximum k in this fashion.  Though getting comfortable with <code>argsort</code> will help you in the next task
+                                            </p>
+
+                                            <HR>
+                                            <h2><a name = "kmost">Part 2: Top k Most Used Words (7 Pts)</a></h2>
+
+                                            <p>
+                                                Your next task is to loop through all of the tweets and to print out the top k most commonly used words.  Create a method <code>get_k_most_popular_words(tweets, k)</code> to do this.  For instance, 
+
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    tweets = pickle.load(open("trumpSinceElection.dat", "rb"))
+                                                    get_k_most_popular_words(tweets, 120)
+                                                ]]></script>  
+                                                should print out the following words in order
+                                            </p>
+
+                                            <p>
+                                                <table><tr><td>
+                                                    1 the<BR>2 to<BR>3 and<BR>4 of<BR>5 a<BR>6 in<BR>7 is<BR>8 rt<BR>9 for<BR>10 on<BR>11 that<BR>12 are<BR>13 i<BR>14 will<BR>15 with<BR>16 our<BR>17 be<BR>18 great<BR>19 we<BR>20 have<BR></td><td>21 &amp;<BR>22 they<BR>23 it<BR>24 this<BR>25 was<BR>26 you<BR>27 at<BR>28 has<BR>29 he<BR>30 not<BR>31 by<BR>32 president<BR>33 all<BR>34 very<BR>35 as<BR>36 my<BR>37 no<BR>38 just<BR>39 so<BR>40 who<BR></td><td>41 from<BR>42 people<BR>43 -<BR>44 thank<BR>45 their<BR>46 democrats<BR>47 but<BR>48 his<BR>49 trump<BR>50 do<BR>51 been<BR>52 an<BR>53 about<BR>54 now<BR>55 new<BR>56 more<BR>57 fake<BR>58 big<BR>59 or<BR>60 what<BR></td><td>61 get<BR>62 would<BR>63 many<BR>64 news<BR>65 if<BR>66 than<BR>67 never<BR>68 out<BR>69 there<BR>70 american<BR>71 should<BR>72 up<BR>73 your<BR>74 u.s.<BR>75 @realdonaldtrump<BR>76 want<BR>77 when<BR>78 much<BR>79 united<BR>80 one<BR></td><td>81 even<BR>82 @realdonaldtrump:<BR>83 time<BR>84 america<BR>85 being<BR>86 me<BR>87 make<BR>88 were<BR>89 like<BR>90 going<BR>91 good<BR>92 can<BR>93 only<BR>94 which<BR>95 must<BR>96 house<BR>97 impeachment<BR>98 after<BR>99 border<BR>100 had<BR></td><td>101 country<BR>102 other<BR>103 doing<BR>104 don’t<BR>105 because<BR>106 media<BR>107 back<BR>108 nothing<BR>109 over<BR>110 into<BR>111 vote<BR>112 how<BR>113 dems<BR>114 state<BR>115 am<BR>116 republican<BR>117 did<BR>118 states<BR>119 working<BR>120 why<BR></td><td></tr></table>                                                    
+                                                    
+                                                To help you out, you should have a loop that looks like this somewhere
+                                                <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                    for tweet in tweets:
+                                                        for word in tweet['text'].split():
+                                                            word = word.lower() #Make all characters lowercase
+                                                            ...
+                                                ]]></script>  
+
+                                                This splits the text in each tweet into a list of its individual words and puts the words into lowercase so that lowercase and uppercase versions count the as the same word.
+
+
+                                                <div id = "tips">
+                                                    <h3>Tips</h3>
+                                                    <ul>
+                                                        <li> 
+                                                            Let's say, for the sake of argument, that I have the following word_counts dictionary
+
+                                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                                word_counts = {'the':100, 'and':50, 'america':1000}
+                                                            ]]></script>  
+                                                            
+                                                            Then, if I say
+
+
+                                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                                words = list(word_counts.keys())
+                                                            ]]></script>  
+
+                                                            and then I say
+
+                                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                                counts = np.array(list(word_counts.values()))
+                                                            ]]></script>  
+
+                                                            then now I have a list of all words and a corresponding numpy array of all of the counts.  You can then argsort <code>counts</code> and use that to pick out the top k words
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </p>
+
+
+                                            <HR>
+                                            <h2>Part 3: COVID Tweets (7 Pts)</h2>
+                                            <p>
+                                            Make a function <code>plot_coronavirus_timeline(tweets)</code> that loops through all of the tweets in the database and picks out all of the tweets that mention either "<b>corona</b>", "<b>virus</b>", or "<b>covid</b>" in the lowercase version of the <code>'text'</code> key.  Then, it should create a bar chart that shows a bar for each date during which these words were mentioned, with the height of the bar equal to the number of tweets with this mentioned on that particular day.
+
+                                            </p>
+                                            <p>
+                                            Since plotting labeled bar charts in <code>matplotlib</code> is not obvious, you may use the starter code below.  You simply need to fill in the <code>counts</code> dictionary.  You should use the provided  <code><a href = "https://github.com/Ursinus-IDS301-S2020/Week8Class/blob/1a9239a72b5536e71cc8d5c14c9c30c18c8dcb22/Twitter.py#L58">get_tweet_date(tweet)</a></code> to create the key for this dictionary.  This function puts the dates into <code>Year/MM/DD</code> format, which ensures that alphabetical is the order in which they occur in time.
+
+                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                            def plot_coronavirus_timeline(tweets):
+                                                counts = {} # A dictionary with keys as date strings and
+                                                # values as the counts of the number of tweets that 
+                                                # contain the search words on that day
+                                                
+
+                                                ## TODO: Type your code here.  You should loop through each tweet and 
+                                                # check the lowercase version of its text to see if it contains 
+                                                # the words "virus", "corona", or "covid".  If it does, then
+                                                # add one to the counts for that day
+                                            
+                                                N = len(counts)
+                                                xticks = sorted(counts.keys())
+                                                vals = [counts[x] for x in xticks]
+                                                plt.bar(range(N), vals)
+                                                plt.xticks(range(N), xticks, rotation=90)
+                                                plt.tight_layout()
+                                                plt.show()
+                                            ]]></script>  
+
+
+
+                                            <div id = "tips">
+                                                <h3>Tips</h3>
+                                                <ul>
+                                                    <li> 
+                                                        To check if a string is contained in another string, simply say 
+                                                        <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                            if string1 in string2:
+                                                                ...
+                                                        ]]></script>  
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            </p>
+
+                                    </div>
+                            </div>
+                        </div>
+                        
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                        <li>
+                                                            <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                            <ul>
+                                                                <li><li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                        <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                        <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                        <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                        <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                        <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                        <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                        <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                    </ul>
+                                                </li>
+											</ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+                                        Announcements		
+                                        <ul>
+                                            <li><a href = "../../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
+
+                                            <li><a href = "../../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
+                                        </ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

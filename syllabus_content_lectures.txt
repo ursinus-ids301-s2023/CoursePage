@@ -9,7 +9,7 @@ Course Sneak Preview
 LECTURE
 Software Environment, Arithmetic Operations, Variable Naming, Begin Lists
 
-<ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#getting-started-in-python">2.2</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week1Class">Code for class week 1</a></li></ul>
+<ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#getting-started-in-python">2.2</a></li></ul>
 LECTURE
 List slicing, Numpy Arrays / Plotting
 
@@ -17,7 +17,7 @@ List slicing, Numpy Arrays / Plotting
 LECTURE
 Audio Processing: Sinusoids
 
-<ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week2Class">Code for class week 2</a></li> </ul>
+
 LECTURE
 Functions, Echoes/Convolution, Noise, Comb Filters
 
@@ -29,7 +29,7 @@ The Discrete Fourier Transform, Begin Image Processing
 LECTURE
 Image Processing: 2D Arrays / Grids, Moiré Patterns, Quantization/Dithering
 
-<ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/ImageProcessingClass">Image Processing Code for Class</a></li><li><a href = "https://en.wikipedia.org/wiki/Dither">Wikipedia Page on Dithering</a></li><li><a href = "https://www.youtube.com/watch?v=xAoljeRJ3lU">The design of matplotlib colormaps</a></li></ul>
+<ul><li><a href = "https://en.wikipedia.org/wiki/Dither">Wikipedia Page on Dithering</a></li><li><a href = "https://www.youtube.com/watch?v=xAoljeRJ3lU">The design of matplotlib colormaps</a></li></ul>
 SECTION
 Unit 2: Particle Simulations
 In this unit, we will begin to explore some fundamental programming paradigms that will turn our computer into much more than a basic calculator.  In particular, we will study "if/else" statements, which are decisions made at runtime.  We will also begin loops, which will make it much easier to repeat the same code over and over again with minor variations.  Both of these things will allow us to begin exploring some interesting applications, including <a href = "https://en.wikipedia.org/wiki/Fractal">fractal generation</a> and simulations of celestial bodies. <h3>Science Topics</h3><ul><li>Fractals, the n-body problem, flocking simulations, chaos</li></ul><h3>Programming Topics</h3><ul><li>Loops, if statements, parallel arrays</li></ul><h3>Libraries Introduced</h3><ul><li><a href = "https://vpython.org/">vpython</a></li></ul>
@@ -89,7 +89,7 @@ Finish multidimensional scaling, argsort/argmin, dictionaries practice
 LECTURE
 Nearest Neighbors, Digit Classification, Audio Genre Classification
 
-<ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week10Class/archive/master.zip">Code from this week</a></li><li><a href = "https://web.microsoftstream.com/video/ac357e3b-da66-4355-a2a0-40ce42ca09bf">Lecture recording from spring 2020</a></li><li><a href = "https://scikit-learn.org/stable/modules/neighbors.html">sklearn nearest neighbors documentation</a></li></ul>
+<ul><li><a href = "https://web.microsoftstream.com/video/ac357e3b-da66-4355-a2a0-40ce42ca09bf">Lecture recording from spring 2020</a></li><li><a href = "https://scikit-learn.org/stable/modules/neighbors.html">sklearn nearest neighbors documentation</a></li></ul>
 LECTURE
 Ridge Regression, Text Vectorization, Sparse Matrices
 
@@ -101,7 +101,7 @@ In this unit, we will study algorithms that deal with sequences in text and audi
 LECTURE
 Recursion, The Dynamic Programming Concept
 
-<ul><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week11Class/">Code from this week</a></li><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#humans-chimpanzees-and-spell-checkers">2.1</a>, <a href = "CSForAll/Ch2.html#recursion">2.7</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.8</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.9</a>, <a href = "CSForAll/Ch2.html#use-it-or-lose-it">2.10</a></li><li><a href = "https://web.microsoftstream.com/video/ff420cb0-59be-4f27-8e81-50a56b6e3860">Lecture recording from spring 2020</a></li><li><a href = "https://web.microsoftstream.com/video/35b419f7-91f8-4f3b-b6f0-643d4097d7f8">Followup video on recursion and dynamic programming</li><li><a href = "https://web.microsoftstream.com/video/ae2f2839-fa4c-46ad-a438-8a88524ac652">Looping through lists review</a></li></ul>
+<ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#humans-chimpanzees-and-spell-checkers">2.1</a>, <a href = "CSForAll/Ch2.html#recursion">2.7</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.8</a>, <a href = "CSForAll/Ch2.html#recursion-revealed">2.9</a>, <a href = "CSForAll/Ch2.html#use-it-or-lose-it">2.10</a></li><li><a href = "https://web.microsoftstream.com/video/ff420cb0-59be-4f27-8e81-50a56b6e3860">Lecture recording from spring 2020</a></li><li><a href = "https://web.microsoftstream.com/video/35b419f7-91f8-4f3b-b6f0-643d4097d7f8">Followup video on recursion and dynamic programming</li><li><a href = "https://web.microsoftstream.com/video/ae2f2839-fa4c-46ad-a438-8a88524ac652">Looping through lists review</a></li></ul>
 LECTURE
 Edit Distance
 
@@ -109,7 +109,7 @@ Edit Distance
 LECTURE
 Dynamic Programming Solutions To Edit Distance, Needleman-Wunsch
 
-<ul><li><a href = "https://web.microsoftstream.com/video/b9cc6b3b-b16d-48e6-a213-2b36653c82c2">Lecture recording from spring 2020</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week12Class">Code from this week</a></li></ul>
+<ul><li><a href = "https://web.microsoftstream.com/video/b9cc6b3b-b16d-48e6-a213-2b36653c82c2">Lecture recording from spring 2020</a></li></ul>
 LECTURE
 Backtracing Alignment Tables, Dynamic Time Warping for Audio Alignment
 
@@ -125,7 +125,7 @@ Markov Chains on Letters
 LECTURE
 Markov Chains And N-Grams
 
-<ul><li><a href = "https://web.microsoftstream.com/video/64acc407-2fa1-46c4-b044-ccb8d8ebcc7a">Lecture video from today</a></li><li><a href = "https://github.com/Ursinus-IDS301-S2020/Week13Class/commit/9aa453587e930775f1712b404e73a50df79f73ea">Code from characters to n-grams</a></li></ul>
+<ul><li><a href = "https://web.microsoftstream.com/video/64acc407-2fa1-46c4-b044-ccb8d8ebcc7a">Lecture video from today</a></li></ul>
 LECTURE
 No class
 

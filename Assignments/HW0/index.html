@@ -7,7 +7,7 @@
 <html>
 <!-- Header !-->
 	<head>
-		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<title>Ursinus IDS 301: Problem Sovling And Analysis with Python, Spring 2023</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -34,14 +34,14 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Sovling And Analysis with Python, Spring 2023</strong></a>
 								</header>
 <!-- End Header !-->
 
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h2>Assignment 0: Warmup (15 Points)</h2>
+										<h2>Assignment 0: Warmup (10 Points)</h2>
 									</header>
 
 									<div id="page-content">
@@ -51,13 +51,13 @@
 
                                         <h3>Personal Survey (5 Pts)</h3>
                                         <p>
-                                            I gave a couple of fun facts about myself in the class, but I want to get to know you all better.  So please submit answers to the following questions as a <u>private message</u> to me on Microsoft Teams
+                                            I gave a couple of fun facts about myself in the class, but I want to get to know you all better.  So please submit answers to the following questions as a <u>private message</u> to me on Discord
                                         </p>
 
                                         <ol>
                                             <li>Your Name, Your Nickname (if applicable) / Preferred Pronouns </li>
 
-                                            <li>What is your reason for taking the course? (Blunt honesty is perfectly fine here, if applicable)</li>
+                                            <li>What is your reason for taking the course?</li>
 
                                             <li>What are you majoring in / interested in majoring in?</li>
 
@@ -74,48 +74,24 @@
                                             <li>A fun fact about yourself</li>
 
                                             <li>Anything else you think I should know?</li>
-
-                                            <li>Please attach <b>a headshot</b> to your message.  I will use this to help get to know your name, but we will also use this in class to arrange groups.</li>
                                         </ol>
-
-                                        <h3>Doodle Poll for Office Hours</h3>
-
-                                        <p>
-                                            You will not be graded on this, but I want to setup my office hours so that everyone can make at least one of them.  Please <a href = "https://doodle.com/poll/9tvk8tzyx5kppdax">click here</a> and put a checkbox next to every hour block in which you can attend at least 30 minutes in your schedule.  You may use a pseudonym if you wish.
-                                        </p>
 
                                         <h3>Software Environment (5 pts)</h3>
                                         <p>
-                                            Please follow <a href = "../../Software">the directions on the software page</a> to install Anaconda Python on your computer.  Once you have Python installed, <a href = "test.py">click here</a> to download some code that we will use to test it, and place it in your <code>IDS301</code> folder (or wherever else you plan to store your class projects..but it is recommended that you keep them organized and back them up regularly).  Then, open Spyder, and go to <BR>
-                                                <code>File->Open</code><BR>
-                                            and open the <code>test.py</code> file that you just downloaded.  Finally, click the run button, which looks like this:<BR><BR>
+                                            Please follow <a href = "../../Software">the directions on the software page</a> to install Anaconda Python on your computer.  Once you have Python installed, run the following code in a jupyter notebook:
 
-                                                <img src = "Run.png">
-                                            <BR><BR>
-                                            Then, <b>send me a screenshot of the image that pops up in the console to the right of Spyder, using a private message on Microsoft Teams (5pts)</b>
-                                        </p>
+                                            <script type="syntaxhighlighter" class="brush: python"><![CDATA[
+                                                import numpy as np
+                                                import matplotlib.pyplot as plt
+                                                
+                                                pix = np.linspace(-1, 1, 100)
+                                                X, Y = np.meshgrid(pix, pix)
+                                                I = np.exp(-(X**2 + Y**2))
+                                                plt.imshow(I)
+                                                plt.show()
+                                            </script>  
 
-                                        <p>
-                                            Please be sure also that you are able to launch Jupyter.  We will be using this in class for the first two weeks before we switch over to Spyder.
-                                        </p>
-
-                                        
-
-                                        <h3>Syllabus (5 pts)</h3>
-                                        <p>
-                                            Please take a moment to familiarize yourself with <a href = "../../">the course syllabus</a>.  Then, <b>please send me a third and final message on Microsoft Teams with the answers to the following questions</b>
-                                            
-                                            <ol>
-                                                <li>True/False: If you choose to work with a buddy, you are allowed to look at your buddy's code and show them your code</li>
-
-                                                <li>True/False: You may look at any classmate's code on assignments.</li>
-
-                                                <li>What happens if you show up after the lecture has already started?</li>
-
-                                                <li>What is my longest possible response lag on Microsoft Teams during the week?</li>
-
-                                                <li>How do you ask an anonymous question on Microsoft Teams?</li>
-                                            </ol>
+                                            Then, <b>send me a screenshot of the image that pops up in the console to the right of Spyder, using a private message on Discord (5pts)</b>
                                         </p>
 
                                     </div>

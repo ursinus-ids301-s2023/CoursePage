@@ -7,7 +7,7 @@
 <html>
 <!-- Header !-->
 	<head>
-		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</title>
+		<title>Ursinus IDS 301: Problem Sovling And Analysis with Python, Spring 2023</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -34,7 +34,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2020</strong></a>
+									<a href="../index.html" class="logo"><strong>Ursinus IDS 301: Problem Sovling And Analysis with Python, Spring 2023</strong></a>
 								</header>
 <!-- End Header !-->
 
@@ -44,17 +44,12 @@
 										<h1>Software Environment</h1>
                                     </header>
 									<p>
-										We will be using a distribution of python known as <a href = "https://www.anaconda.com/distribution/">Anaconda Python</a>, which comes shipped with the majority of the tools that we need for the course.  <a href = "https://www.anaconda.com/distribution/">Click here</a> to download Anaconda.  Please choose the 64-bit version of <b>Python 3.7</b> for your operating system (Windows/Mac/Linux), download it, and follow the default options during installation, includng registering this as the default Python for your system.
+										We will be using a distribution of python known as <a href = "https://www.anaconda.com/distribution/">Anaconda Python</a>, which comes shipped with the majority of the tools that we need for the course.  <a href = "https://www.anaconda.com/distribution/">Click here</a> to download Anaconda.  Please choose the 64-bit version of <b>Python 3.9</b> for your operating system (Windows/Mac/Linux), download it, and follow the default options during installation, includng registering this as the default Python for your system.
 									</p>
 
 									<p>
-										Once you install Anaconda, you should be able to launch <b>Spyder</b> and <b>Jupyter</b>, which are the two environments we will be using to write and run code.  Under Windows, you can launch these programs by searching for them in the search bar.  Under Mac/Linux, you can run them by typing <code>spyder</code> and <code>jupyter</code>, respectively, in the command prompt.
+										Once you install Anaconda, you should be able to launch <b>Jupyter</b>, which is the environment we will be using to write and run code.  Under Windows, you can launch this by searching for them in the search bar.  Under Mac/Linux, you can run it by typing <code>jupyter</code> in the command prompt.
                                     </p>
-                                    
-                                    <p>
-                                        Below is a picture of what Spyder looks like
-                                    </p>
-                                    <img src = "SpyderScreenshot.png">
 
                                     <p>
                                         Below is a picture of what jupyter looks like
@@ -63,10 +58,47 @@
                                     <img src = "JupyterScreen.png">
 
 
+									<HR>
+										<h2><a name = "autoreload">External .py Files Autoreloaded in Jupyter</a></h2>
+										<p>
+											In this class, we'll treat jupyer notebooks like an extended "main" with experiments/plots, while the bulk of important methods will go in a separate <code>.py</code> file that we import into a jupyter notebook.  You can make a .py file from within the jupyter interface as follows (or you can use any other text editor such as <a href = "https://code.visualstudio.com/">Visual Studio Code</a> or <a href = "https://atom.io/">Atom</a>, as long as you save it in the same directory as your notebook):
+										</p>
+
+										<img src = "makepy.gif">
+
+										<p>
+											Then, you can create a notebook and import all of the code from your file by typing
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+											%load_ext autoreload
+											%autoreload 2
+											from mycode import *
+										]]></script> 
+
+										<p>
+											Where I'm assuming I'm in the same directory as a file called mycode.py (or whatever else you want to call it).  The <a href = "https://ipython.org/ipython-doc/3/config/extensions/autoreload.html">autoreload</a> extension makes it so that you don't have to restart your notebook every time you make changes to your <code>.py</code> file, unless you add methods, in which case you'll still need to restart the notebook
+										</p>
+
+										<img src = "makenotebook.gif">
+
+									<HR>
+										<h2><a name = "colab">Google Colab</a></h2>
+										<p>
+											For students who prefer to work on the cloud during class, there is an option similar to repl.it known as <a href = "https://colab.research.google.com">Google Colab</a> that you can use.
+										</p>
+
 
 
 						</div>
 					</div>
+
+
+				<!--Syntax highlighting in Javascript!-->
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shCore.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+				<link type="text/css" rel="stylesheet" href="../../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+				<script type="text/javascript">SyntaxHighlighter.all();</script>
 
 <!-- Sidebar -->
                     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -85,45 +117,28 @@
                                         <li>
 											<span class="opener">Assignments</span>
 											<ul>
-												<li><a href = "../Assignments/index.html">Main Assignments Page</a></li>
-												<li>
-													<ul>
-                                                        <li><a href = "../Assignments/HW0/index.html">HW0: Warmup</a></li>
-                                                        <li><a href = "../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
-                                                        <li>
-                                                            <a href = "../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
-                                                            <ul>
-                                                                <li><li><a href = "../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href = "../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
-                                                        <li><a href = "../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
-                                                        <li><a href = "../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
-                                                        <li><a href = "../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
-                                                        <li><a href = "../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
-                                                        <li><a href = "../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
-                                                        <li><a href = "../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
-                                                        <li><a href = "../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
-                                                        <li><a href = "../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>
+                                                <!--<li><a href = "../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                <li><a href = "../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+                                                <li>
+                                                    <a href = "../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                    <ul>
+                                                        <li><li><a href = "../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a></li></li>
                                                     </ul>
                                                 </li>
-											</ul>
+                                                <li><a href = "../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                <li><a href = "../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                <li><a href = "../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                <li><a href = "../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                <li><a href = "../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                <li><a href = "../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                <li><a href = "../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                <li><a href = "../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                <li><a href = "../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>!-->
+                                            </ul>
                                         </li>
                                         <li><a href = "../FinalProject/index.html">Final Project</a></li>
 									</ul>
 								</nav>
-
-							<!-- Section -->
-								<section>
-									<div class="mini-posts">
-                                        Announcements		
-                                        <ul>
-                                            <li><a href = "../Assignments/HW8_MarkovHybrids/gallery.html">Markov Hybrid Student Gallery</a> for HW8 is up!</li>
-
-                                            <li><a href = "../Assignments/HW1_AudioProcessing/MusicalStatements">Musical Statements</a> for HW1: Audio Processing are up!</li>
-                                        </ul>								
-                                    </div>
-								</section>
 
 
 							<!-- Footer -->

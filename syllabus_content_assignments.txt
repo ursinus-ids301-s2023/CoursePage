@@ -1,87 +1,87 @@
 <a href = "../Assignments/HW0">Homework 0: Warmup</a> Out
 
-2020-01-22
+2023-01-18
 Homework 0 Due
 
-2020-01-26
+2023-01-22
 <a href = "../Assignments/HW1a">Homework 1a: linspace and sinusoids</a> out
 
-2020-01-29
+2023-01-25
 Homework 1a Due
 
-2020-02-02
+2023-01-29
 <a href = "../Assignments/HW1_AudioProcessing">Homework 1: Audio Processing</a> Out
 
-2020-02-03
+2023-01-30
 Homework 1 Due
 
-2020-02-12
+2023-02-08
 <HR><a href = "../Assignments/HW2_Steganography">Homework 2: Steganography</a> Out
 
-2020-02-12
+2023-02-08
 <a href = "../Assignments/HW3a_LeapYears">HW3a: Gregorian Leap Years</a> Out
 
-2020-02-18
+2023-02-14
 Homework 2 Due
 
-2020-02-19
+2023-02-15
 <HR><a href = "../Assignments/HW3b_ChaosGame">HW3b: The Chaos Game</a> Out
 
-2020-02-19
+2023-02-15
 Homework 3a Due
 
-2020-02-24
+2023-02-20
 Homework 3b Due
 
-2020-02-28
+2023-02-24
 <a href = "../Assignments/HW4_NBodyProblem">Homework 4: N-Body Problem</a> Out
 
-2020-02-29
+2023-02-25
 Homework 4 Due
 
-2020-03-06
+2023-03-03
 <a href = "../Assignments/HW4b_EpidemicSpreading">Homework 4b: Epidemic Spreading</a> Out
 
-2020-03-17
+2023-03-14
 Homework 4b Due
 
-2020-03-24
+2023-03-21
 Homework 5: <a href = "../Assignments/HW5_TweetWrangling">Tweet Wrangling</a> Out
 
-2020-03-27
+2023-03-24
 Homework 5 Due
 
-2020-04-05
+2023-04-02
 <a href = "../Assignments/HW6_MovieReviews">Homework 6: Movie Reviews</a> Out
 
-2020-04-08
+2023-04-05
 Homework 6 Due
 
-2020-04-20
+2023-04-17
 <a href = "../Assignments/HW7_NeedlemanWunsch">Homework 7: Needleman-Wunsch</a> Out
 
-2020-4-24
+2023-04-21
 Homework 7 Due<HR>
 
-2020-05-04
+2023-05-01
 <a href = "../Assignments/HW8_MarkovHybrids">Homework 8: Markov Hybrids</a> Out
 
-2020-05-04
+2023-05-01
 Homework 8 Due
 
-2020-05-08
+2023-05-05
 Final Project Video / Slide Due
 
-2020-05-12
+2023-05-09
 Final Project Feedback Due
 
-2020-05-13
+2023-05-10
 Final Project Due
 
-2020-05-14
+2023-05-11
 Final Project Initial Proposal Due
 
-2020-03-06
+2023-03-03
 Final Project Milestone
 
-2020-04-24
+2023-04-21

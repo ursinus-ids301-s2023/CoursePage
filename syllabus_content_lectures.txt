@@ -7,11 +7,11 @@ Course Sneak Preview
 
 <ul><li><a href = "https://docs.google.com/presentation/d/1EqGUe0tpxp_O-QZz4-EdqBHUZ3wZ1pZf4JR3Q7f0U5w/edit?usp=sharing">Slides from today</a></li></ul>
 LECTURE
-Software Environment, Arithmetic Operations, Variable Naming, Begin Lists
+Software Environment, Arithmetic Operations, Variable Naming
 
-<ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#getting-started-in-python">2.2</a></li></ul>
+<ul><li><a href = "Lectures/Week1Class/Week1_Fundamentals.ipynb">Notebook from today</a></li><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#getting-started-in-python">2.2</a></li></ul>
 LECTURE
-List slicing, Numpy Arrays / Plotting
+Lists, Slicing, Numpy Arrays / Plotting
 
 <ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#more-data-from-numbers-to-strings">2.3</a>, <a href = "CSForAll/Ch2.html#lists">2.4</a></li><li><a href = "https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/">Reference on array slicing</li></ul>
 LECTURE

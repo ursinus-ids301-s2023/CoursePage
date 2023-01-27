@@ -52,3 +52,6 @@
 [submodule "Assignments/HW6_MovieReviews/HW6_MovieReviews"]
 	path = Assignments/HW6_MovieReviews/HW6_MovieReviews
 	url = https://github.com/Ursinus-IDS301-S2020/HW6_MovieReviews.git
+[submodule "Assignments/HW1a/HW1a_LinspaceSinusoids"]
+	path = Assignments/HW1a/HW1a_LinspaceSinusoids
+	url = https://github.com/ursinus-ids301-s2023/HW1a_LinspaceSinusoids.git

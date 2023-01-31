@@ -17,7 +17,7 @@ Lists, Slicing, Numpy Arrays / Plotting
 LECTURE
 Audio Processing: Sinusoids, Noise, Begin Methods
 
-
+<ul><li><a href = "Lectures/Week3_Audio">Class Notes on Digital Audio Processing</a></li></ul>
 LECTURE
 Methods, Echoes/Convolution, Comb Filters
 

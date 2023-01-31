@@ -37,202 +37,272 @@
 									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2023</strong></a>
 								</header>
 <!-- End Header !-->
+<!-- Content -->
+<section>
+	<header class="main">
+		<h1>Assignment 1: Audio Processing</h1>
+		<h3>by <a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+		<h3>Due Wednesday 2/8/2023</h3>
+	</header>
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-                                        <h1>Assignment 1: Audio Processing</h1>
-                                        <h3>Due Wednesday 2/12/2020</h3>
-									</header>
+	<div id="page-content">
+		<p>
+			The purpose of this assignment is to get students familiar with numpy arrays and some audio concepts with a fun application.
+		</p>
 
-									<div id="page-content">
-										<p>
-                                            The purpose of this assignment is to get students familiar with numpy arrays and some audio concepts with a fun application.  Please visit <a href = "https://github.com/Ursinus-IDS301-S2020/HW1_AudioProcessing">this link</a> to get the starter code for this assignment.  You will be editing the file <code>HW1_AudioProcessing.ipynb.</code>
-                                        </p>
+	</div>
 
-                                    </div>
+	<h2><a name = "squarewavemethod">Part 1: Square Wave Method (6 Points)</a></h2>
+	<p>
+	A <i>square wave</i> of a particular frequency can be obtained by starting with a sinusoid
 
-                                    <h2>Part 1: Comb Filters (10 pts)</h2>
-                                    <!--Write a method to make a comb filter at the appropriate frequency-->
+	\[ f(t) = sin(2 \pi f t) \]
 
-                                    <p>
-                                    We talked about comb filters in class.  Amazingly, when you a bunch of echoes of random noise to itself, it makes a pitched sound whose fundamental frequency is equal to 1 over the period of the shift.  This is like what happens in a resonant cavity of a particular length.
-                                    </p>
+	and "quantizing" it by making all positive values 1 and all negative values -1.  The figure below shows what this looks like:</p>
+	
+	<img src = "SquareWave.svg">
 
-                                    <p>
-                                        In this part of the assignment, you will <b>fill in a function</b> <code>get_comb_sound</code> which creates the result of applying a comb filter to random noise.  This function takes as input the following:
-                                        <ul>
-                                            <li><code>fs</code>: The sampling frequency (number of samples per second)</li>
-
-                                            <li><code>note</code>: The number of halfsteps above a 440hz "concert A" the note is.  Recall that the formula for the fundamental frequency is 
-                                            <h3>
-                                                \[ f = 440*2^{h/12} \]
-                                            </h3>
-                                            Then, the shift between pulses in the comb filter is the period associated to this frequency, which is <code>1/f</code>.
-                                            </li>
-                                            <li><code>duration</code>: The number of seconds of audio to generate.</li>
-                                            <li><code>n_pulses</code>: The number of pulses to use in the comb filter.  They should all be equally spaced by the period you find.</li>
-                                        </ul>
-                                    </p>
-                                    
-                                    <p>
-                                    Here are the steps you should follow to implement the function.  Note that all code should be written in the <code>get_comb_sound</code> function before the <code>return</code> statement
-                                    <ol>
-                                        <li>
-                                        Compute the frequency using "note" with the familiar formula 440*(2<SUP>(note/12)</SUP>)
-                                        </li>
-                                        <li>
-                                            Use this frequency to figure out a period (T) of oscillation.  Note that the sample rate equals the frequency times the period, which will help.
-                                        </li>
-                                        <li>
-                                            Create a "comb filter" <code>h</code> which is all zeros except for a "pulse train" of 1s with a period T in between each pulse.  There are examples of how to do this in the <a href = "https://github.com/Ursinus-IDS301-S2020/Week2Class/blob/master/Week2_Audio.ipynb">class notebook</a> using array slices. But the key is the spacing should be in terms of the period T.  Also, be sure that your <code>h</code> array is long enough so that it has <code>n_pulses</code> unique pulses.
-                                        </li>
-                                        <li>
-                                            Convolve the random samples x with your comb filter h, and return the result
-                                        </li>
-                                    </ol>
-
-                                    </p>
-
-                                    <p>
-                                        After you implement the function, <b>please answer the following questions</b>:
-                                    <ul>
-
-                                        <li>In your notebook, please describe what changes in the sound as you add more pulses to the comb filter.  You can do this using a markdown cell.</li>
-                                        <li>In your notebook, please discuss what happens to the Fourier Transform of the signal when you add more pulses to the comb filter.  Based on what you heard, why do you think this is happening?  <i>Please submit at least two plots with your final submission to demonstrate this</i>.  </li>
-                                    </ul>
-                                    </p>
-
-                                    <div id = "tips">
-
-										<h3>Tips</h3>
-										<ul>
-										<li>If you pass in a decimal number for the duration (which you should be able to do), then the total number of samples will be of a fractional type.  We need to "truncate" this number (drop the decimal), or numpy will not be happy using this as the length a list.  This is done for you.  You will need to do a similar thing with the period between pulses in the comb pulse train.</li>
-                                    </div>
-
-                                    <h2>Part 2: Square Waves (10 pts) </h2>
-                                    <p>
-                                    A <i>square wave</i> of a particular frequency can be obtained by starting with a sinusoid
-
-                                    \[ f(t) = sin(2 \pi f t) \]
-
-                                    and "quantizing" it by making all positive values 1 and all negative values -1.  The figure below shows what this looks like:</p>
-                                    
-                                    <img src = "SquareWave.svg">
-
-                                    <p>
-                                        <b>Create a square wave</b> of a particular frequency by first starting with a sine wave, and then passing it to the <code>np.sign()</code> function (the "sine" and "sign" get a bit confusing here).  To show you what <code>np.sign</code> does, here's an example<BR>
-
-                                        <code>
-                                            x = np.array([-1.1, -0.5, 0.01, 100])<BR>
-                                            np.sign(x)
-                                        </code><BR>
-
-                                        will give<BR>
-
-                                        <code>
-                                            [-1, -1, 1, 1]
-                                        </code>
-
-                                        <BR>
-                                        If you've gotten this to work properly, it should look like the picture above.
+	<h4>Your Task</h4>
+	<p>
+	   Write a method <code>get_square_note(sr, p, time)</code> that creates a square wave sampled at a sample rate of <code>sr</code> samples per second with note number <code>p</code> over a duration of <code>time</code> seconds.  Recall that the formula to convert from a note number <code>p</code> to a frequency <code>f</code> is 
+	</p>
+	<h3>
+		\[ f = 440 \times 2^{p/12} \]
+	</h3>
 
 
-                                    </p>
+	<h4>Hints</h4>
+	<p>
+		
+		<b>Hint #1</b>: The easiest way to create a square wave is to first start with a sine wave, and then pass it to the <code><a href = "https://numpy.org/doc/stable/reference/generated/numpy.sign.html">np.sign()</a></code> function (the "sine" and "sign" get a bit confusing here).  To show you what <code>np.sign</code> does, here's an example
+			<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+				x = np.array([-1.1, -0.5, 0.01, 100])
+				np.sign(x)
+			</script>
+		
+		will give <code>
+			[-1, -1, 1, 1]
+		</code>
+	</p>
 
-                                    <p>
-                                        Once you get this to work, have a listen to the sound, and plot the magnitude of its Fourier Transform.  <b>Describe what pattern you notice, and come up with an approximation of the square wave by adding sines together.  Verify visually and by listening that this approximates the square wave</b>. <b>Please make sure your final notebook contains a plot of the square wave, a plot of its Fourier Transform, and a plot of your sinusoidal approximation.</b>
-                                    </p>
+	<p>
+		<b>Hint #2: </b> Be sure to round to the nearest whole number of samples.  You can round a variable <code>x</code> down to the nearest whole number by typing <code>int(x)</code>
+	</p>
 
-                                    <p>
-                                        For your own edification, note how your approximations sound a bit like a clarinet.  <a href = "https://pages.mtu.edu/~suits/clarinet.html">Click here</a> to see why this is the case.
-                                    </p>
+	<p>
+		Below are a couple of examples of calling this method that you should compare yours to:
+	</p>
+
+	<iframe src="SquareExamples.html" width="80%" height="420"> </iframe>
+
+	<HR>
+	<h2><a name = "bday">Part 2: Happy Birthday Squared (6 Points)</a></h2>
+	<p>
+		<b>Your Task:</b> Use the method you wrote in the last task to create the beginning part of the happy birthday tune.  This consists of the following note sequence:
+	</p>
+	<ol>
+		<li>0.25 seconds of note number 0</li>
+		<li>0.25 seconds of silence</li>
+		<li>0.25 seconds of note number 0</li>
+		<li>0.25 seconds of silence</li>
+		<li>1 second of note number 2</li>
+		<li>1 second of note number 0</li>
+		<li>1 second of note number 5</li>
+		<li>2 seconds of note number 4</li>
+	</ol>
+
+	<p>
+		If this works properly, the result should sound like this:
+	</p>
+
+	<audio controls>
+		<source src="bday.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	  </audio> 
+	<p></p>
+
+	<HR>
+	<h2><a name = "comb">Part 3: Comb Filter Notes And Experiments (10 pts)</a></h2>
+	
+
+	<p>
+		As we discussed in class, it is possible to create a note by shaping noise using a "comb filter."  We first generate random noise (<code>np.random.randn(num_samples)</code>), then we <code><a href = "https://numpy.org/doc/stable/reference/generated/numpy.convolve.html">convolve</a></code> with a "pulse train" of equally spaced impulses.  The notebook below shows an example.  Your task in this section is to generalize this and encapsulate it inside of a method
+	</p>
+
+	<iframe src="Comb.html" width="100%" height="800"></iframe>
+
+	<h4>Coding Task</h4>
+	<p>
+		Write a method <code>get_comb_note(sr, p, time, num_pulses)</code> that creates a comb filtered note sampled at a sample rate of <code>sr</code> samples per second with note number <code>p</code> over a duration of <code>time</code> seconds, using <code>num_pulses</code> pulses in the comb filter.
+	</p>
+
+	<h4>Hints</h4>
+	<p>
+		The trickiest part of this is to figure out what the length in between the pulses should be given the note number.  To determine this, compute the frequency <b>f</b> corresponding to the note number, and then use a spacing <code>int(sr/f)</code>.  This is referred to as the "period," or the number of samples per cycle, rounded down to the nearest integer.
+	</p>
+
+	<h4>Experiments</h4>
+	
+	<p>
+		After you implement the function, <b>answer the following questions</b>:
+	<ul>
+
+		<li>In your notebook, describe what changes in the sound as you add more pulses to the comb filter.  You can do this using a markdown cell.</li>
+		<li>In your notebook, discuss what happens to the Fourier Transform of the signal when you add more pulses to the comb filter.  Based on what you heard, why do you think this is happening?  <b>Submit at least two plots with your final submission to demonstrate this</b>.  </li>
+	</ul>
+	</p>
+
+	<HR>
+	<h2><a name = "fouriersqure">Part 4: Fourier Transform of Square Waves (8 Points)</a></h2>
+
+	<p>
+		Use the code you wrote in <a href = "#squarewavemethod">part 1</a> to generate a square wave at a 440hz frequency (note number 0), and plot the magnitude of its Fourier Transform.  Based on what you see, come up with an approximation of the square wave by adding sines together.  Verify visually and by listening that this approximates the square wave. <b>Make sure your final notebook contains a plot of the square wave, a plot of its Fourier Transform, and a plot of your sinusoidal approximation.</b>
+	</p>
+
+	<p>
+		For your own edification, note how your approximations sound a bit like a clarinet.  <a href = "https://pages.mtu.edu/~suits/clarinet.html">Click here</a> to see why this is the case.
+	</p>
 
 
-                                    <div id = "tips">
-										<h3>Tips</h3>
-										<ul>
-										<li><b>Hint:</b> This is like the triangle wave series we went over in class, except it only uses half as many sinusoids.</li>
-                                    </div>
+	<div id = "tips">
+		<h3>Tips</h3>
+		<ul>
+		<li><b>Hint:</b> This is like the sawtooth wave series we went over in class, except it only uses half as many sinusoids.</li>
+	</div>
+
+	<HR>
+
+	<h2><a name = "musical">Part 5: Musical Statement (5 pts)</a></h2>
+
+	<p>
+		An echo pattern is also known as an <b>impulse response</b>.  The comb filters we've looked at so far are the impulse responses of 1D resonant cavities with no loss, but you can measure much more complicated and realistic impulse responses by clapping or popping a balloon in some environment and then recording all of the echoes that come back.  You then use these recorded impulse responses to simulate what any sound would sound like in that environment.  For example, consider the following audio clip:
+	</p>
+
+	<audio controls>
+	<source src="aud_jessiesgirl.mp3" type="audio/mp3">
+	</audio>
+
+	<p>
+		Now consider the following impulse response, which was obtained from someone clapping in the JFK tunnel
+	</p>
+
+	<audio controls>
+		<source src="imp_JFKTunnel.mp3" type="audio/mp3">
+	</audio>
+	
+	<p>
+		When we do convolution of the audio clip by this impulse response (also called "convolving" the audio clip with the impulse response), the result is as follows
+	</p>
+
+	<audio controls>
+		<source src="jessiesgirl_JFKTunnel.mp3" type="audio/mp3">
+	</audio>
+
+	<p>
+		It really sounds as if "Jessie's Girl" was played in the JFK tunnel!
+	</p>
+
+	<p>
+	Your task in this part of the assignment will be to <b>record an impulse response and find a sound to convolve it with</b>.  There will be a class wide competition to see who can come up with most creative convolution, and <i>the winner will receive 2 extra credit points on the assignment.</i>
+	</p>
+
+	<p>
+		<b>NOTE: </b>  You will need to convert any audio you want to use to a <code>.wav</code> file before you can use the above code.  You can do this using a program called <a href = "https://www.audacityteam.org/download/">Audacity</a>.  Or, if you're having trouble, simply e-mail me the files and I'll convert them for you.  I want to help you realize your creative vision!
+	</p>
+</div>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
-                                    <h2>Part 3: Musical Statement (5 pts)</h2>
+<!--LaTeX in Javascript!-->
+<script src="../../../../jsMath/easy/load.js"></script>
+<!--Syntax highlighting in Javascript!-->
+<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
 
-                                    <p>
-                                        An echo pattern is also known as an <b>impulse response</b>.  The comb filters we've looked at so far are the impulse responses of 1D resonant cavities with no loss, but you can measure much more complicated and realistic impulse responses by clapping or popping a balloon in some environment and then recording all of the echoes that come back.  You then use these recorded impulse responses to simulate what any sound would sound like in that environment.  For example, consider the following audio clip:
-                                    </p>
-
-                                    <audio controls>
-                                    <source src="aud_jessiesgirl.mp3" type="audio/mp3">
-                                    </audio>
-
-                                    <p>
-                                        Now consider the following impulse response, which was obtained from someone clapping in the JFK tunnel
-                                    </p>
-
-                                    <audio controls>
-                                        <source src="imp_JFKTunnel.mp3" type="audio/mp3">
-                                    </audio>
-                                    
-                                    <p>
-                                        When we do convolution of the audio clip by this impulse response (also called "convolving" the audio clip with the impulse response), the result is as follows
-                                    </p>
-
-                                    <audio controls>
-                                        <source src="jessiesgirl_JFKTunnel.mp3" type="audio/mp3">
-                                    </audio>
-
-                                    <p>
-                                        It really sounds as if "Jessie's Girl" was played in the JFK tunnel!
-                                    </p>
-
-                                    <p>
-                                    Your task in this part of the assignment will be to <b>record an impulse response and find a sound to convolve it with</b>.  There will be a class wide competition to see who can come up with most creative convolution, and <i>the winner will receive 5 extra credit points on the assignment.</i>
-                                    </p>
-
-                                    <p>
-                                        <b>NOTE: </b>  You will need to convert any audio you want to use to a <code>.wav</code> file before you can use the above code.  You can do this using a program called <a href = "https://www.audacityteam.org/download/">Audacity</a>.  Or, if you're having trouble, simply e-mail me the files and I'll convert them for you.  I want to help you realize your creative vision!
-                                    </p>
-
-                                    <h2>What to submit</h2>
-                                    <p>
-                                        When you are finished the above tasks, please submit your <code>HW1_AudioProcessing.ipynb</code> file to canvas, along with your impulse response, your audio file of choice, and the result of convolution for part 3.  Please also submit a README with the answers to the following questions:
-
-                                        <ul>
-                                            <li>
-                                                Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
-                                            </li>
-                                            <li>
-                                                Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
-                                            </li>
-                                            <li>Would you like your impulse response + sound to be posted publicly on the class web site?  If so, what name/pseudonym would you like to use?</li>
-                                            <li>
-                                                Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
-                                            </li>
-                                        </ul>
-                                    </p>
-						</div>
-                    </div>
-
+<!-- Sidebar -->
                     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
                     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-					
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+										<li><a href = "../../Software/index.html">Software</a>  <a href = "https://www.online-python.com/">Online-Python</a><a href = "https://colab.research.google.com/">Google Colab</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+                                                <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+												<li>
+                                                    <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                </li>
+												<!--
+                                                <li><a href = "../../Assignments/HW2_Steganography/index.html">HW2: Steganography</a></li>
+                                                <li><a href = "../../Assignments/HW3a_LeapYears/index.html">HW3a: Gregorian Leap Years</a></li>
+                                                <li><a href = "../../Assignments/HW3b_ChaosGame/index.html">HW3b: The Chaos Game</a></li>
+                                                <li><a href = "../../Assignments/HW4_NBodyProblem/index.html">HW4: N-Body Problem</a></li>
+                                                <li><a href = "../../Assignments/HW4b_EpidemicSpreading/index.html">HW4b: Epidemic Spreading</a></li>
+                                                <li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+                                                <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>!-->
+                                            </ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
 			
             <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>			
-			
-            <!-- Start of StatCounter Code -->
-            <script type="text/javascript">
-            var sc_project=7309088; 
-            var sc_invisible=1; 
-            var sc_security="f655b56d"; 
-            </script>
-            <script type="text/javascript"
-            src="http://www.statcounter.com/counter/counter.js"></script>
-            <noscript><div class="statcounter"><a title="free hit counter"
-            href="http://statcounter.com/" target="_blank"><img class="statcounter"
-            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
-            counter"></a></div></noscript>
-            <!-- End of StatCounter Code -->
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <!-- End Sidebar !-->
 
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

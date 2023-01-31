@@ -15,11 +15,11 @@ Lists, Slicing, Numpy Arrays / Plotting
 
 <ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#more-data-from-numbers-to-strings">2.3</a>, <a href = "CSForAll/Ch2.html#lists">2.4</a></li><li><a href = "https://www.pythoncentral.io/how-to-slice-listsarrays-and-tuples-in-python/">Reference on array slicing</li></ul>
 LECTURE
-Audio Processing: Sinusoids
+Audio Processing: Sinusoids, Noise, Begin Methods
 
 
 LECTURE
-Functions, Echoes/Convolution, Noise, Comb Filters
+Methods, Echoes/Convolution, Comb Filters
 
 <ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#functioning-in-python">2.5</a></li></ul>
 LECTURE

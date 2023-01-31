@@ -10,7 +10,7 @@ Homework 0 Due
 Homework 1a Due
 
 2023-01-29
-Homework 1: Audio Processing<!--<a href = "Assignments/HW1_AudioProcessing">Homework 1: Audio Processing</a> Out!-->
+<a href = "Assignments/HW1_AudioProcessing">Homework 1: Audio Processing</a> Out
 
 2023-01-30
 Homework 1 Due

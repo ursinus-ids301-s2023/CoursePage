@@ -35,7 +35,7 @@ Unit 2: Particle Simulations
 In this unit, we will begin to explore some fundamental programming paradigms that will turn our computer into much more than a basic calculator.  In particular, we will study "if/else" statements, which are decisions made at runtime.  We will also begin loops, which will make it much easier to repeat the same code over and over again with minor variations.  Both of these things will allow us to begin exploring some interesting applications, including <a href = "https://en.wikipedia.org/wiki/Fractal">fractal generation</a> and simulations of celestial bodies. <h3>Science Topics</h3><ul><li>Fractals, the n-body problem, flocking simulations, chaos</li></ul><h3>Programming Topics</h3><ul><li>Loops, if statements, parallel arrays</li></ul><h3>Libraries Introduced</h3><ul><li><a href = "https://vpython.org/">vpython</a></li></ul>
 
 LECTURE
-Spyder, If Statements
+If Statements
 
 <ul><li><i>CS For All</i> <a href = "CSForAll/Ch2.html#making-decisions">2.6</a></li></ul>
 LECTURE

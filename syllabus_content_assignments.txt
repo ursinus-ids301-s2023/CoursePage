@@ -16,19 +16,13 @@ Homework 1a Due
 Homework 1 Due
 
 2023-02-08
-<HR>Homework 2: Steganography Out<!--<a href = "Assignments/HW2_Steganography">Homework 2: Steganography</a> Out!-->
+<a href = "Assignments/HW2a_LeapYears">HW2a: Gregorian Leap Years</a> Out
 
-2023-02-08
-HW3a: Gregorian Leap Years Out<!--<a href = "Assignments/HW3a_LeapYears">HW3a: Gregorian Leap Years</a> Out!-->
-
-2023-02-14
-Homework 2 Due
-
-2023-02-15
+2023-02-13
 <HR>HW3b: The Chaos Game Out<!--<a href = "Assignments/HW3b_ChaosGame">HW3b: The Chaos Game</a> Out!-->
 
 2023-02-15
-Homework 3a Due
+Homework 2a Due
 
 2023-02-20
 Homework 3b Due

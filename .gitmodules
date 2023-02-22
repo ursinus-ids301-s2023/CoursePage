@@ -55,3 +55,6 @@
 [submodule "Assignments/HW1a/HW1a_LinspaceSinusoids"]
 	path = Assignments/HW1a/HW1a_LinspaceSinusoids
 	url = https://github.com/ursinus-ids301-s2023/HW1a_LinspaceSinusoids.git
+[submodule "Assignments/HW3_NBodyProblem/HW3_NBodyProblem"]
+	path = Assignments/HW3_NBodyProblem/HW3_NBodyProblem
+	url = https://github.com/ursinus-ids301-s2023/HW3_NBodyProblem.git

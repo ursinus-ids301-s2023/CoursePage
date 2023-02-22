@@ -19,19 +19,19 @@ Homework 1 Due
 <a href = "Assignments/HW2a_LeapYears">HW2a: Gregorian Leap Years</a> Out
 
 2023-02-13
-<HR>HW3b: The Chaos Game Out<!--<a href = "Assignments/HW3b_ChaosGame">HW3b: The Chaos Game</a> Out!-->
-
-2023-02-15
 Homework 2a Due
 
 2023-02-20
-Homework 3b Due
+<HR><a href = "Assignments/HW2b_ChaosGame">HW2b: The Chaos Game</a> Out
 
-2023-02-24
-Homework 4: N-Body Problem Out<!--<a href = "Assignments/HW4_NBodyProblem">Homework 4: N-Body Problem</a> Out!-->
+2023-02-20
+Homework 2b Due
 
-2023-02-25
-Homework 4 Due
+2023-03-03
+<a href = "Assignments/HW3_NBodyProblem">Homework 3: N-Body Problem</a> Out
+
+2023-02-21
+Homework 3 Due
 
 2023-03-03
 Homework 4b: Epidemic Spreading Out<!--<a href = "Assignments/HW4b_EpidemicSpreading">Homework 4b: Epidemic Spreading</a> Out!-->

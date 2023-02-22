@@ -43,7 +43,7 @@ Boolean Statements, Begin Loops
 
 <ul><li><i>CS For All</i> <a href = "CSForAll/Ch5.html#repeated-tasks-loops">5.3</a></li></ul>
 LECTURE
-While Loops: Epoch Time, The 10 Heads Problem
+Estimating PI, While Loops: Epoch Time, The 10 Heads Problem
 
 <ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown 10 Heads Experiment</a></li></ul>
 LECTURE

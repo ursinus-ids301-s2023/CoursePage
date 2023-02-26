@@ -64,7 +64,7 @@
 
                                             <h3>Net forces</h3>
                                             <p>
-                                                One thing that makes this a bit trickier than just the earth and the moon is that for each body, <i>all of the other bodies exert force on it at once</i>.  We refer to this as a <b>net force</b>.  The acceleration due to all of these forces can simply be obtained at each timesetp by summing the acceleration vectors for each individual body.  The acceleration on <code>body i</code> due to <code>body j</code>, which we refer to as <code>a<SUB>i,j</SUB></code> can be computed with the <a name = "graviatation">following formula</a> 
+                                                One thing that makes this a bit trickier than just the earth and the moon is that for each body, <i>all of the other bodies exert force on it at once</i>.  We refer to this as a <b>net force</b>.  The acceleration due to all of these forces can simply be obtained at each timestep by summing the acceleration vectors for each individual body.  The acceleration on <code>body i</code> due to <code>body j</code>, which we refer to as <code>a<SUB>i,j</SUB></code> can be computed with the <a name = "graviatation">following formula</a> 
                                                 <h3>\[ a_{i,j} = \frac{G m_j}{||p_j - p_i||^3}  (p_j - p_i)\]</h3>
                                                 where <code>p<SUB>i</SUB></code> is the position of the ith rigid body, <code>p<SUB>j</SUB></code> is the position of the jth rigid body, <code>m<SUB>j</SUB></code> is the mass of the jth body, and <code>G</code> is the gravitational constant.  To obtain the net acceleration at the ith body, we simply add all of the acceleration vectors for all bodies.  For each planet <code>i</code>, this looks like
                                                 <h3>
@@ -75,11 +75,11 @@
                 
                                         <h2>Code To Write</h2>
                                         <p>
-                                            <a href = "https://github.com/ursinus-ids301-s2023/HW3_NBodyProblem/archive/refs/heads/master.zip">Click here</a> to download the skeleton code for this assignment.  You will be editing the file <code>NBody.py</code>.  By default, this file loads the text file <a href = "4Planets.csv">4Planets.csv</a>, which has information about the initial position, the initial velocity, and the mass of the Sun, Mercury, Venus, Earth, and Mars.  (You are free to edit this file in Microsoft Excel or a similar program once you get this to work to see what happens when you change the masses and speeds).  The code already loads the universe and sets up the VPython objects to display it.  It also performs step 1 of the animation loop of computing elapsed time, as well as step 3 of updating the graphics.  <b>It will be your job to implement step 2 of the animation loop, which is updating the physics</b>.  There are three arrays that you have to update during every iteration of the animation loop, in this order:
+                                            <a href = "https://github.com/ursinus-ids301-s2023/HW3_NBodyProblem/archive/refs/heads/master.zip">Click here</a> to download the skeleton code for this assignment.  You will be editing the file <code>NBody.py</code>.  By default, this file loads the text file <a href = "4Planets.csv">4Planets.csv</a>, which has information about the initial position, the initial velocity, and the mass of the Sun, Mercury, Venus, Earth, and Mars.  (You are free to edit this file in Microsoft Excel or a similar program once you get this to work to see what happens when you change the masses and speeds).  The code already loads the universe and sets up the VPython objects to display it.  It also performs step 1 of the animation loop of computing elapsed time, as well as step 3 of updating the graphics.  <b>It will be your job to implement step 2 of the animation loop, which is updating the physics</b>.  There are three vpython vectors that you have to update during every iteration of the animation loop, in this order:
                                             <ol>
-                                                <li><u><b><code>A</code></b></u>: This is an <code>N x 3 </code> array of acceleration vectors.  There is one (x, y, z) vector per row for each of N rigid bodies.  Each rows starts off as <code>(0, 0, 0)</code> at each iteration of the loop.  It will be your job to fill in the rows of this, as explained below</li>
-                                                <li><u><b><code>V</code></b></u>: This is an <code>N x 3</code> array of velocity vectors, one for each planet.  You should update each row of these based on the accelerations you compute.</li>
-                                                <li><u><b><code>P</code></b></u>: This is an <code>N x 3</code> array of position vectors, one for each planet.  You should update each row of these based on the velocities you compute.  These are what are drawn at the end of each loop.</li>
+                                                <li><u><b><code>accelerations</code></b></u>: This is a list of all of the acceleration vectors of the planets.  Each acceleration starts off as <code>(0, 0, 0)</code> at each iteration of the loop.  You will then have to update each vector each frame of the animation based on gravitation from the other planets.</li>
+                                                <li><u><b><code>velocities</code></b></u>: This is a list of velocity vectors, one for each planet.  You should update each one based on the accelerations you compute.</li>
+                                                <li><u><b><code>planets</code></b></u>: This is list of vpython spheres, one for each planet.  You should update the <code>pos</code> attribute of each of these based on its velocity, and this will update where the planets are drawn.</li>
                                             </ol>
                                         </p>
 
@@ -88,14 +88,14 @@
                                         </p>
                                         <h3>Updating the acceleration</h3>
                                         <ul>
-                                            <li>For each rigid body <b>i</b> from <code>0</code> to <code>N-1</code></li>
+                                            <li>For each rigid body <b>i</b> from <code>0</code> to <code>n_planets-1</code></li>
                                             <li>
-                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp For each rigid body <b>j</b> from <code>0</code> to <code>N-1</code>, <i>excluding <b>i</b></i>, compute the acceleration <code>a<SUB>i, j</SUB></code> using the gravitation formula above, and add this to the ith row of <b>A</b>.
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp For each rigid body <b>j</b> from <code>0</code> to <code>N-1</code>, <i>excluding <b>i</b></i>, compute the acceleration <code>a<SUB>i, j</SUB></code> using the gravitation formula above, and add this to acceleration of planet <b>i</b>.
                                             </li>
                                         </ul>
                                         <h3>Updating the position/velocity</h3>
                                         <ul>
-                                            <li>For each rigid body <b>i</b> from <code>0</code> to <code>N-1</code>, update the ith row of <b>V</b> to be <code>V[i, :] + dt*A[i, :]</code>, and then update the ith row of <b>P</b> to be <code>P[i, :] + dt*V[i, :]</code></li>
+                                            <li>For each rigid body <b>i</b> from <code>0</code> to <code>N-1</code>, update the ith row of <b>V</b> to be <code>velocities[i] + dt*accelerations[i]</code>, and then update the ith planet's position to be <code>planets[i].pos + dt*velocities[i].pos</code></li>
                                         </ul>
 
                                         <p>
@@ -111,12 +111,11 @@
                                             Remember that adding or subtracting vectors with numpy is as simple as the <code>+</code> and <code>-</code> operation.
                                             </li>
                                             <li>
-                                                In numpy, the magnitude of a vector <code>v</code> can be computed with 
+                                                In vpython, the length of a vector <code>v</code> can be obtained as
                                                 <p>
                                                     <script type="syntaxhighlighter" class="brush: python"><![CDATA[
-                                                        np.sqrt(np.sum(v**2))
+                                                        v.mag
                                                     ]]></script>   
-                                                This is actually just the pythagorean theorem; it's taking the square root of the sum of the squares of components.  Of course, you will have to substitute <code>v</code> for whatever vector of which you want the magnitude.
                                                 </p>
                                             </li>
                                             <li>

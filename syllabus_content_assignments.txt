@@ -34,12 +34,12 @@ Homework 2b Due
 Homework 3 Due
 
 2023-03-03
-Homework 4b: Epidemic Spreading Out<!--<a href = "Assignments/HW4b_EpidemicSpreading">Homework 4b: Epidemic Spreading</a> Out!-->
+<a href = "Assignments/HW4_Chaos">Homework 4: Chaos</a> Out
 
-2023-03-14
-Homework 4b Due
+2023-03-13
+Homework 4 Due
 
-2023-03-21
+2023-03-20
 Homework 5: Tweet Wrangling Out<!--<a href = "Assignments/HW5_TweetWrangling">Homework 5: Tweet Wrangling</a> Out!-->
 
 2023-03-24

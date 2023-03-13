@@ -41,8 +41,8 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h1>HW3a: Gregorian Leap Years (10 Points)</h1>
-                                        <h3>Due Monday 2/20/2023</h3>
+                                        <h1>HW4: Chaos</h1>
+                                        <h3>Due Monday 3/20/2023</h3>
 									</header>
 
 									<div id="page-content">
@@ -51,32 +51,90 @@
                                     <h2>Overview</h2>
 
                                     <p>
-                                        Because the length of a <a href = "https://en.wikipedia.org/wiki/Tropical_year">tropical year</a> is actually about <b>365.24 days</b>, we occasionally need <i>leap years</i> with 366 days to keep everything on track.  The <a href = "https://en.wikipedia.org/wiki/Julian_calendar">Julian calendar</a> originally had a simple rule that a leap year occurred every 4 years, but this led to too many leap years, so the modern <a href = "https://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a> has slightly different rules, which are as follows:
-                                        <ul>
-                                            <li>
-                                                Every year that is not a centennial year, but which is evenly divisible by 4, is a leap year.
-                                            </li>
-                                            <li>
-                                                Only centennial years which are evenly divisible by 400 are leap years.  So, for instance, the year 2000 was a leap year, and 2400 will be a leap year, but 1900 was not, nor will 2100, 2200, or 2300 be.
-                                            </li>
-                                        </ul>
-                                    </p>
+                                        In this assignment, you'll explore a phenomenon in nature known as <b>chaos</b>.  Formally, this is defined as a "sensitivity to initial conditions"; that is, if we change one little thing in our environment, we can get radically different solutions over time.  Colloquially, this is known as the <a href = "https://en.wikipedia.org/wiki/Butterfly_effect">butterfly effect</a>, and it's the reason, for instance, that we have a difficult time predicting the weather.
+									</p>
 
-                                    <h2>Code To Write</h2>
-                                    <p>
-                                        You should create a notebook with a method <code>is_a_leap_year(year)</code>.  This method should take as input a year, and it should return <code>True</code> if that year is a leap year or <code>False</code> otherwise. Submit this file to Canvas when you are finished.
-                                    </p>
+									<p>
+										In this assignment, you will numerically explore two manifestations of chaos using python: a planet orbiting a binary star system, and a simple predator/prey model known as the "logistic map."
+									</p>
 
-                                    <h2>Testing</h2>
-                                    <p>
-                                        Be sure to run your code on at least 4 cases that cover all of your code:
-                                        <ul>
-                                            <li>A non-centennial year which is not a leap year (e.g. 1997)</li>
-                                            <li>A non-centennial year which is a leap year (e.g. 2020)</li>
-                                            <li>A centennial year which is not a leap year (e.g. 1900)</li>
-                                            <li>A centennial year which is a leap year (e.g. 2400)</li>
-                                        </ul>
-                                    </p>
+									<h3>Learning Goals</h3>
+									<ul>
+										<li>Explore numerical stability issues in simulations</li>
+										<li>Manipulate data files for python</li>
+										<li>Implement loops</li>
+										<li>Manipulate arrays in loops</li>
+									</ul>
+
+									<h3>What To Submit</h3>
+									<p>
+										When you're finished, submit the following to canvas:
+										<ul>
+											<li>The file <code>BinaryStar.svg</code> and the three screenshots for <a href = "#binarystar">part 1</a></li>
+											<li>A .py file containing the method <code>get_logistic</code> for <a href = "#logistic">part 2</a>, as well as the parameter combinations for <b>x0</b> and <b>r</b> that you chose to find the different dynamics.</li>
+										</ul>
+									</p>
+
+									<h2><a name = "binarystar">Part 1: Binary Star System (10 Points)</a></h2>
+
+									<p>
+										In this part, you're going to do a series of experiments using your code from the <a href = "../HW3_NBodyProblem/">last assignment</a> to create a binary star system with one <a href = "https://en.wikipedia.org/wiki/Tatooine">planet</a>.  Setup the following system in a file called <code>BinaryStar.csv</code>:
+									</p>
+
+									<ul>
+										<li>One star at position <b>(-10<SUP>11</SUP>meters, 0 meters, 0 meters)</b> with an initial velocity of <b>(0 meters/sec, 0 meters/sec, 10,000 meters/sec)</b> and a mass of <b>10<SUP>30</SUP></b> kilograms</li>
+
+										<li>A second star at position <b>(10<SUP>11</SUP>meters, 0 meters, 0 meters)</b> with an initial velocity of <b>(0 meters/sec, 0 meters/sec, -10,000 meters/sec)</b> and a mass of <b>10<SUP>30</SUP></b> kilograms.  This star is roughly as far away from the other star as the distance from the sun to mars.</li>
+
+										<li>
+											A planet directly in between them at position <b>(0 meters, 0 meters, 0 meters)</b> moving perpendicularly to the stars' rotational plane at an initial velocity of <b>(0 meters/sec, 20,000 meters/sec, 0 meters/sec)</b>, with a mass of <b>6 x 10<SUP>24</SUP></b> kilograms.
+										</li>
+									</ul>
+
+									<p>
+										<b>Task 1: </b> Run this simulation for 1000 days and <b>take a screenshot of the orbits</b>.
+									</p>
+
+									<p>
+										<b>Task 2: </b> Next, keep everything the same, except change the x component of the planet's initial velocity from 0 to <b>0.01 meters/sec</b>.  This is an <b>incredibly minute</b> change in the initial velocity which translates to about 0.02 miles/hour change.  <b>Take a screenshot of the orbits.</b>
+									</p>
+
+									<p>
+										<b>Task 3: </b> Finally, keep everything the same, except change the x component of the planet's initial velocity from 0 to <b>1 meter/sec</b>.  This is still an incredibly minute change compared to the overall velocity.  <b>Take a screenshot of the orbits.</b>
+									</p>
+
+									<p>
+										<b>Reflection question: </b> What's disconcerting/strange about what you see?  What is a "day" on this planet?
+									</p>
+
+									<HR>
+									<h2><a name = "logistic">Part 2: Logistic Map (10 Points)</a></h2>
+
+									<p>
+										There is a simple "discrete nonlinear differential equation" model for predator/prey dynamics that evolves the population of the prey based on its current size.  The equation, known as the <b>logistic map</b>, is defined as follows
+									</p>
+
+									<h3>
+										\[ x_{n+1} = r x_n (1-x_n) \]
+									</h3>
+
+									<p>
+										Where <b>x<SUB>n</SUB></b> is a number between 0 and 1 representing the predator population; 0 means none of the predator, and 1 means the maximum amount of the predator that its environment can accommodate.  Intuitively, if the population is high, they will reproduce a lot more (the <b>x<SUB>n</SUB></b> term), but there will also be less food distributed to each animal, so they will start to starve (the <b>1-x<SUB>n</SUB></b> term).  Finally, <b>r</b> is some constant between 0 and 4.
+									</p>
+
+									<h4>Your Task</h4>
+									<p>
+										Create a method <code>get_logistic(x0, r, N)</code>  That generates and returns an array with <b>N</b> samples of the logistic function with constant <b>r</b>, starting with a value of <b>x0</b>.
+									</p>
+
+									<p>
+										Once that's finished, find a set of parameters for <b>x0</b> and for <b>r</b> that lead to the following dynamics:
+										<ul>
+											<li>A decaying oscillation</li>
+											<li>A non-decaying oscillation</li>
+											<li>Noise / chaos</li>
+										</ul>
+									</p>
 
 									    
                                     </div>

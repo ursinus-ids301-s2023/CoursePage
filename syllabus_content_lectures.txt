@@ -45,21 +45,21 @@ Boolean Statements, Begin Loops
 LECTURE
 Estimating PI, While Loops: Epoch Time, The 10 Heads Problem
 
-<ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown 10 Heads Experiment</a></li></ul>
+<ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown 10 Heads Experiment</a></li><li><a href = "https://www.youtube.com/watch?v=FlICC3lpvtw">Bonus: intro to recursion video</a></li></ul>
 LECTURE
 VPython Animations, Euler Steps for Vector Simulations of Gravitation
 
 
 LECTURE
-Continue Gravitational Simulations / VPython, Begin Binary Star Simulation
+Continue Gravitational Simulations / VPython
 
 
 LECTURE
-Finish Binary Star Simulation
+Work Session
 
 
 LECTURE
-Chaos, The Logistic Map
+Chaos: Binary Star Planet Simulation, The Logistic Map
 
 
 LECTURE

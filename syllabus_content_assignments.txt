@@ -40,12 +40,12 @@ Homework 3 Due
 Homework 4 Due
 
 2023-03-20
-Homework 5: Tweet Wrangling Out<!--<a href = "Assignments/HW5_TweetWrangling">Homework 5: Tweet Wrangling</a> Out!-->
+<HR><a href = "Assignments/HW5_TweetWrangling">Homework 5: Tweet Wrangling</a> Out
 
-2023-03-24
+2023-03-20
 Homework 5 Due
 
-2023-04-02
+2023-03-31
 Homework 6: Movie Reviews Out<!--<a href = "Assignments/HW6_MovieReviews">Homework 6: Movie Reviews</a> Out!-->
 
 2023-04-05

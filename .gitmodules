@@ -58,3 +58,6 @@
 [submodule "Assignments/HW3_NBodyProblem/HW3_NBodyProblem"]
 	path = Assignments/HW3_NBodyProblem/HW3_NBodyProblem
 	url = https://github.com/ursinus-ids301-s2023/HW3_NBodyProblem.git
+[submodule "Assignments/HW6_DigitsNN/HW6_DigitsNN"]
+	path = Assignments/HW6_DigitsNN/HW6_DigitsNN
+	url = https://github.com/ursinus-ids301-s2023/HW6_DigitsNN.git

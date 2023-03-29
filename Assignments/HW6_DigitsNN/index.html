@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2023</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus IDS 301: Problem Solving And Analysis with Python, Spring 2023</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h1>HW6: Nearest Neighbors for Digit Classification</h1>
+										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+										<h2>Background</h2>
+
+										<p>
+											<p>In this assignment, we'll explore an example of <b>supervised learning</b>, which is the process of teaching a computer to predict what some input is based on a set of <b>labeled examples</b> that we give it beforehand.  We'll look specifically at the example of classifying 28x28 images of the digits 0-9 from the <a href = "https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a> dataset.  We're not always fortunate enough to have data that's labeled like this, but when we do, there are a variety of techniques we can use to learn models of the different classes.
+										</p>
+										<p>In this assignment, we explore a supervised learning technique known as <b>nearest neighbors</b>.  If we have a way of measuring a <b>distance</b> between two different data points, then we can apply this technique.  For example, let's suppose we had a labeled set of data points in two classes: red circles and blue squares.  Then, let's say we wanted to guess which of the two classes some new data point was in.  We'll depict this data point as a black triangle, as shown below</p>
+										<p><img src = "NN2Dexample.svg" width="60%"></p>
+										<p>The <b>K-nearest neighbors</b> technique simply finds the <b>K</b> closest labeled examples, as measured by the distance, and uses them to vote on the class identity of this new point.  In the above example, we choose <b>K = 5</b> for the 5 nearest neighbors, and we happen to get 4 votes for a red circle and 1 vote for a blue square, so we would label this new data point as a red circle.</p>
+										<p>Overall, we can think of nearest neighbors as a supervised learning technique that <b>memorizes</b> examples.  This means it's only as good as the examples, and it will do better with a higher number and variety of examples, which we don't always have access to.  By contrast, other learning techniques will try to better <b>generalize</b> some knowledge to new examples.  But we'll start with this "memorizer" first.</p>
+
+
+										<h2>Getting Started / Loading Data</h2>
+
+										<p>
+											First, let's see how to load the digits and the format I've set them up in for this assignment.  First, <a href = "https://github.com/ursinus-ids301-s2023/HW6_DigitsNN/archive/refs/heads/main.zip">click here</a> to download the starter code.  You'll be editing the file <code>digits.py</code>.  Start by adding the following code to the bottom of that file:
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+											digits = load_mnist_digits()
+											plt.imshow(digits[i][ex], cmap='gray')
+											plt.xlabel("Pixel Column")
+											plt.ylabel("Pixel Row")
+											plt.colorbar()
+											</script>
+										
+										<p>
+											When you run it, you should see an image like this:
+										</p>
+										<img src = "0_0.png" width="30%">
+
+										<p>
+											The <code>digits</code> variable is a 4 dimensional array that holds all of our examples.  The indices are
+										</p>
+										<p>
+											<code>digits[0-9][example][pixel row][pixel column]</code>
+										</p>
+										<p>
+											So, for example,
+										</p>
+										<p>
+											<code>digits[4][301][5][8]</code>
+										</p>
+											
+											is the pixel at row index 5, column index 8 in the 302nd example of the digit "4".  To plot all of the pixels for this digit, we can do
+										</p>
+
+
+										<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+											plt.imshow(digits[4][302], cmap='gray')
+										</script>
+
+										<img src = "4_302.png" width="30%">
+
+
+										<h2>Task 1: Distance Computation (10 Points)</h2>
+
+										<p>
+											The first task we have is to define a suitable distance function for comparing images of digits.  Since the images are all the same size, we can use what's known as the <b>Euclidean distance formula</b>.  This is actually just the pythagorean theorem, but in higher dimensions.  In English, it is the square root of the sum of squared differences over all pixels.  Mathematically, we'd write it as follows, assuming zero-indexing of the rows and columns of two images <b>I</b> and <b>J</b>:
+										</p>
+
+										<h3>
+											\[ d(I, J) = \sqrt{ \sum_{i=0}^{27} \sum_{j=0}^{27} (I[i][j] - J[i][j])^2 } \]
+										</h3>
+
+										<h4>Your Task</h4>
+										<p>
+											Write a method <code>get_distance</code> that takes in two images and which returns the Euclidean distance between them.  
+										</p>
+										<p>
+											Below are a few examples of inputs and outputs of get_distance on different digits that you can check, sorted in increasing order of distance of those pairs.  Note how, for the most part, digits that are in the same class have lower distances, which is what we would hope for if nearest neighbors is going to work well:
+										</p>
+										<table style="width:400px;">
+											<tr><td>d(digits[1][6687], digits[1][714])</td><td><span style="color:green">4.613</td></tr></span>
+											<tr><td>d(digits[6][2176], digits[6][1956])</td><td><span style="color:green">8.495</td></tr></span>
+											<tr><td>d(digits[9][4369], digits[9][4484])</td><td><span style="color:green">8.575</td></tr></span>
+											<tr><td>d(digits[3][1033], digits[7][4373])</td><td><span style="color:red">9.086</td></tr></span>
+											<tr><td>d(digits[8][1701], digits[1][537])</td><td><span style="color:red">9.510</td></tr></span>
+											<tr><td>d(digits[2][2292], digits[2][151])</td><td><span style="color:green">9.731</td></tr></span>
+											<tr><td>d(digits[5][802], digits[5][2176])</td><td><span style="color:green">9.780</td></tr></span>
+											<tr><td>d(digits[3][2723], digits[3][3531])</td><td><span style="color:green">9.856</td></tr></span>
+											<tr><td>d(digits[4][2930], digits[4][1207])</td><td><span style="color:green">9.971</td></tr></span>
+											<tr><td>d(digits[7][6021], digits[7][3622])</td><td><span style="color:green">10.041</td></tr></span>
+											<tr><td>d(digits[8][2163], digits[9][5072])</td><td><span style="color:red">10.052</td></tr></span>
+											<tr><td>d(digits[1][797], digits[3][659])</td><td><span style="color:red">10.189</td></tr></span>
+											<tr><td>d(digits[0][4735], digits[0][544])</td><td><span style="color:green">10.518</td></tr></span>
+											<tr><td>d(digits[6][2135], digits[7][2222])</td><td><span style="color:red">10.673</td></tr></span>
+											<tr><td>d(digits[8][3560], digits[8][756])</td><td><span style="color:green">10.886</td></tr></span>
+											<tr><td>d(digits[3][2046], digits[5][1871])</td><td><span style="color:red">10.887</td></tr></span>
+											<tr><td>d(digits[0][99], digits[2][2008])</td><td><span style="color:red">11.212</td></tr></span>
+											<tr><td>d(digits[3][3337], digits[7][2745])</td><td><span style="color:red">11.389</td></tr></span>
+											<tr><td>d(digits[2][3468], digits[4][705])</td><td><span style="color:red">11.515</td></tr></span>
+											<tr><td>d(digits[5][4931], digits[0][4859])</td><td><span style="color:red">12.351</td></tr></span>
+
+										
+										</table>
+									    
+										<p>
+											<b>NOTE</b> This is not necessarily the best distance for this task, but the Euclidean distance is often the first thing we try
+										</p>
+
+										<h2>Task 2: K-Nearest Neighbors Classification (20 Points)</h2>
+
+										<p>
+											Now that you have a distance function, you can implement the k-nearest neighbors algorithm
+										</p>
+
+										<h4>Your Task</h4>
+										<p>
+											Create a method <code>classify_digit(I, digits, K)</code>, where <code>I</code> is the image you want to classify, <code>digits</code> is the list of digits that you loaded, and <code>K</code> is the number of nearest neighbors to use.  In this method, compute distances between <code>I</code> and all of the digits, keep track of the smallest <code>K</code> distances, and classify the digit as the class which occurs the most in the nearest <b>K</b>
+										</p>
+
+										<h4>Examples</h4>
+										<p>
+											You can draw your own digits with the program <code>paint.py</code> and see what your classifier gives.  Below are a few examples, not all of which are classified correctly!  But such is life:
+										</p>
+
+										<p>
+											<img src = "Examples/1.png">
+										</p>
+										<p>
+											<img src = "Examples/2.png">
+										</p>
+										<p>
+											<img src = "Examples/3.png">
+										</p>
+										<p>
+											<img src = "Examples/4.png">
+										</p>
+										<p>
+											<img src = "Examples/5.png">
+										</p>
+										<p>
+											<img src = "Examples/7.png">
+										</p>
+										<p>
+											<img src = "Examples/9.png">
+										</p>
+                                    </div>
+                            </div>
+						</div>
+
+				<!--Syntax highlighting in Javascript!-->
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+				<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+				<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+				<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+										<li><a href = "../../Software/index.html">Software</a>  <a href = "https://www.online-python.com/">Online-Python</a><a href = "https://colab.research.google.com/">Google Colab</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+                                                <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+												<li><a href = "../../Assignments/HW1a/index.html">HW1a: linspace and sinusoids</a></li>
+												<li>
+                                                    <a href = "../../Assignments/HW1_AudioProcessing/index.html">HW1: Audio Processing</a>
+                                                </li>
+												<li><a href = "../../Assignments/HW2a_LeapYears/index.html">HW2a: Gregorian Leap Years</a></li>
+												<li><a href = "../../Assignments/HW2b_ChaosGame/index.html">HW2b: The Chaos Game</a></li>
+                                                <li><a href = "../../Assignments/HW3_NBodyProblem/index.html">HW3: N-Body Problem</a></li>
+												<li><a href = "../../Assignments/HW4_Chaos/index.html">HW4: Chaos</a></li>
+												<li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
+												<!--
+                                                <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+                                                <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
+                                                <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>!-->
+                                            </ul>
+                                        </li>
+                                        <li><a href = "../../FinalProject/index.html">Final Project</a></li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+

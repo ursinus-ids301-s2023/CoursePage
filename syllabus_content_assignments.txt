@@ -45,19 +45,19 @@ Homework 4 Due
 2023-03-20
 Homework 5 Due
 
-2023-03-31
-Homework 6: Movie Reviews Out<!--<a href = "Assignments/HW6_MovieReviews">Homework 6: Movie Reviews</a> Out!-->
+2023-04-03
+<a href = "HW6_DigitsNN">Homework 6: Digits Classification</a> Out
 
-2023-04-05
+2023-03-29
 Homework 6 Due
 
-2023-04-17
-Homework 7: Needleman-Wunsch Out<!--<a href = "Assignments/HW7_NeedlemanWunsch">Homework 7: Needleman-Wunsch</a> Out!-->
+2023-04-10
+<HR>Homework 7: Movie Reviews Out
 
-2023-04-21
-Homework 7 Due<HR>
+2023-04-10
+Homework 7 Due
 
-2023-05-01
+2023-04-24
 Homework 8: Markov Hybrids</a> Out<!--<a href = "Assignments/HW8_MarkovHybrids">Homework 8: Markov Hybrids</a> Out!-->
 
 2023-05-01

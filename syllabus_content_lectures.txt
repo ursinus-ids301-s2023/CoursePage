@@ -79,17 +79,21 @@ Python Dictionaries, Pickling, Wrangling Twitter Data
 
 <ul><li><a href = "https://web.microsoftstream.com/video/a75fa6b9-c972-42b9-8e4d-989dc8e5e197">Lecture recording from spring 2020</a></li></ul>
 LECTURE
-High Dimensional Data: Pixel Image Embeddings, Audio Features, Dimension Reduction, Multidimensional Scaling
-
-<ul> <li><a href = "https://web.microsoftstream.com/video/baab2a4c-cf34-4fec-a2a6-7fa86cddac44">Lecture recording from spring 2020</a></li><li><a href = "http://www.covers1000.net/GraphDitty/">Graph Ditty</a> Dimension Reduced Music Visualizer</li><li><a href = "https://towardsdatascience.com/image-classification-in-10-minutes-with-mnist-dataset-54c35b77a38d?gi=e44a7bac7a75">MNIST Image Dataset</a></li></ul>
-LECTURE
-Finish multidimensional scaling, argsort/argmin, dictionaries practice
+argsort/argmin, dictionaries practice
 
 <ul><li><a href = "https://web.microsoftstream.com/video/1aabba83-1f96-44e3-b8be-615e32a4e4aa">Lecture recording from spring 2020</a></li>
 LECTURE
-Nearest Neighbors, Digit Classification, Audio Genre Classification
+Nearest Neighbors, Digit Classification
 
 <ul><li><a href = "https://web.microsoftstream.com/video/ac357e3b-da66-4355-a2a0-40ce42ca09bf">Lecture recording from spring 2020</a></li><li><a href = "https://scikit-learn.org/stable/modules/neighbors.html">sklearn nearest neighbors documentation</a></li></ul>
+LECTURE
+Work Session
+
+
+LECTURE
+Dimension Reduction, Multidimensional Scaling
+
+<ul> <li><a href = "https://web.microsoftstream.com/video/baab2a4c-cf34-4fec-a2a6-7fa86cddac44">Lecture recording from spring 2020</a></li><li><a href = "http://www.covers1000.net/GraphDitty/">Graph Ditty</a> Dimension Reduced Music Visualizer</li></ul>
 LECTURE
 Ridge Regression, Text Vectorization, Sparse Matrices
 
@@ -122,10 +126,6 @@ LECTURE
 Markov Chains on Letters
 
 <ul><li><a href = "https://setosa.io/blog/2014/07/26/markov-chains/">Markov Chains Interactive Demo</a></li><li><a href = "https://web.microsoftstream.com/video/12f27885-96cf-43db-9f5d-04101454c128">Lecture recording from spring 2020</a></li></ul>
-LECTURE
-Markov Chains And N-Grams
-
-<ul><li><a href = "https://web.microsoftstream.com/video/64acc407-2fa1-46c4-b044-ccb8d8ebcc7a">Lecture video from today</a></li></ul>
 LECTURE
 No class
 

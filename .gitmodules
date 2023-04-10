@@ -61,3 +61,6 @@
 [submodule "Assignments/HW6_DigitsNN/HW6_DigitsNN"]
 	path = Assignments/HW6_DigitsNN/HW6_DigitsNN
 	url = https://github.com/ursinus-ids301-s2023/HW6_DigitsNN.git
+[submodule "Assignments/HW7_MovieReviews/HW7_MovieReviews"]
+	path = Assignments/HW7_MovieReviews/HW7_MovieReviews
+	url = https://github.com/ursinus-ids301-s2023/HW7_MovieReviews.git

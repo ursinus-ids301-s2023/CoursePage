@@ -41,40 +41,18 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h1>HW6: Movie Reviews (20 Points)</h1>
-                                        <h3>Due Monday 4/20/2020</h3>
+                                        <h1>HW7: Movie Reviews (25 Points)</h1>
 									</header>
 
 									<div id="page-content">
 									    
                                         <h2>Overview / Logistics</h2>
 										<p>
-                                            The purpose of this assignment is to get you practice with Python dictionaries and machine learning for natural language processing.  By the end of this assignment, you will have a system for automatically determining whether a movie review is positive or negative.  <a href = "https://github.com/Ursinus-IDS301-S2020/HW6_MovieReviews/archive/master.zip">Click here</a> to download the starter code for this assignment.
-                                        </p>
-
-                                        <p>
-                                        <p><a name = "readme">What to submit</a>: <b>When you are finished, you should submit a file <code>MovieReviews.py</code> to Canvas</b>, along with answers to the following as a comment on Canvas:
+                                            The purpose of this assignment is to get you practice with Python dictionaries and machine learning for natural language processing.  By the end of this assignment, you will have a system for automatically determining whether a movie review is positive or negative.  <a href = "https://github.com/ursinus-ids301-s2023/HW7_MovieReviews/archive/refs/heads/master.zip">Click here</a> to download the starter code for this assignment.
                                         </p>
                                         <p>
-                                            <ul>
-                                                <li>
-                                                    Which two movie reviews did you use in <a href = "#part3">part 3</a>?  What scores did you get?
-                                                </li>
-                                                <li>Did you work with a buddy on this assignment?  If so, who?</li>
-                                                <li>
-                                                    Are you using up any grace points to buy lateness days?  If so, how many?
-                                                </li>
-                                                <li>
-                                                    Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
-                                                </li>
-                                                <li>
-                                                    Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
-                                                </li>
-                                                <li>
-                                                    Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
-                                                </li>
-                                            </ul>
-
+                                            <a name = "readme">What to submit</a>: <b>When you are finished, you should submit a file <code>MovieReviews.py</code> to Canvas</b>, along with which two movie reviews you used in <a href = "#part3">part 3</a> and what scores you got for them
+                                        </p>
 
                                         <HR>
                                         <h2>The Problem</h2>
@@ -114,19 +92,22 @@
                                     <h2>Code To Write</h2>
 
 
-                                    <h3>Part 1: BBOW Representation (10 Points)</h3>
+                                    <h3>Part 1: BBOW Representation (15 Points)</h3>
+
+                                    <h4>Your task</h4>
                                     <p>
-                                        In the first part of this assignment, you will create a bag of words representation from a set of all positive and negative reviews.  You should loop through every word in every document (much like you looped through every word in every tweet in the <a href = "../HW5_TweetWrangling/index.html#kmost">last homework</a>) to determine the vocabulary.  You should then build a sparse data matrix with a row for every document and a column for every word in the vocabulary.  You should put a 1 in row <code>i</code> column <code>j</code> if document <code>i</code> contains word <code>j</code>.
+                                        In the first part of this assignment, you will create a bag of words representation from a set of all positive and negative reviews.  You should loop through every word in every document (much like you looped through every word in every tweet in <a href = "../HW5_TweetWrangling/index.html#kmost">HW5</a>) to determine the vocabulary.  You should then build a sparse data matrix with a row for every document and a column for every word in the vocabulary.  You should put a 1 in row <code>i</code> column <code>j</code> if document <code>i</code> contains word <code>j</code>.
                                     </p>
 
-                                    <h3><a name = "extracredit">Extra Credit (+2)</a></h3>
+                                    <h4>A Note on Sparse Matrices</h4>
                                     <p>
                                         If you've done this properly, you will end up with a vocabulary with over 50,000 words.  However, each review will only use about 340 of these words on average.  This means that each row has <b>a ton</b> of zeros.  It is wasteful to store all of these zeros in memory, and it also slows down computation.  It's much better to use a data structure known as a <i>sparse matrix</i>, which has a mechanism to only store values that are nonzero.  Thankfully, the <a href = "https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.lil_matrix.html">scipy library</a> in python makes this quite easy.  You can simply initialize a sparse matrix with the code 
 
                                         <script type="syntaxhighlighter" class="brush: python"><![CDATA[
                                             X = sparse.lil_matrix((N, d))
+
                                         ]]></script>  
-                                        where <code>N</code> is the number of rows and <code>d</code> is the number of columns.  None of the rest of your code needs to change
+                                        where <code>N</code> is the number of rows and <code>d</code> is the number of columns.  You can now index <code>X</code> as an ordinary 2D array.
                                        
 
                                     </p>
@@ -146,7 +127,12 @@
                                     <p>
                                         Once you have the data matrix setup, you can build a model to predict if a review is positive or negative.  As it turns out, most of the words in the vocabulary don't tell us much about whether the review is positive or negative, so most of the dimensions in our vectorization don't matter.  This means that an approach like k-nearest neighbors wouldn't perform very well in this context, since the distance would be swamped by unimportant dimensions.  Instead, we're going to have to do a regression to <i>learn</i> which dimensions are important.
                                     <p>
-                                        Recall in class that we used <a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV">ridge regression</a> to predict the chance of getting accepted to graduate school based on some independent variables (e.g. GRE score, GPA).   Here, we need to predict a <i>binary variable</i>, which is 1 (positive) or 0 (negative), given the independent variables, which are words in our case.  There is a related type of regression called <a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV">logistic regression</a> which is setup for this binary scenario, and you will use that in this part of the assignment. Assuming you have setup a matrix <code>X</code> as your data matrix, and that the first 1000 rows of <code>X</code> correspond to positive reviews and the last 1000 rows of <code>X</code> correspond to negative reviews, the following code will accomplish this
+                                        Here, we need to predict a <i>binary variable</i>, which is 1 (positive) or 0 (negative), given the independent variables, which are words in our case.  There is a related type of regression called <a href = "https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegressionCV.html#sklearn.linear_model.LogisticRegressionCV">logistic regression</a> which is setup for this binary scenario, and you will use that in this part of the assignment. 
+                                    </p>
+
+                                    <h4>Your Task</h4>
+                                    <p>
+                                        Assuming you have setup a matrix <code>X</code> as your data matrix, and that the first 1000 rows of <code>X</code> correspond to positive reviews and the last 1000 rows of <code>X</code> correspond to negative reviews, the following code will accomplish this
                                     </p>
 
                                         <script type="syntaxhighlighter" class="brush: python"><![CDATA[
@@ -155,11 +141,11 @@
                                         ]]></script>  
                                     
                                     <p>
-                                        The code uses "5-fold cross-validation" to compute the model; that is, it splits the data up into 5 random subgroups, referred to as "folds."  Each fold has 80% of the data, and it trains a model on that 80% and tests on the 20% that's been left out.  The score at the end is a number between 0 and 1 which indicates the fraction of predictions that were correct over all folds.  Amazingly, if you have done this properly, you should get a score of 1, which indicates that this model is nearly perfect on this dataset.
+                                        The code uses "5-fold cross-validation" to compute the model; that is, it splits the data up into 5 random subgroups, referred to as "folds."  Each fold has 80% of the data, and it trains a model on that 80% and tests on the 20% that's been left out.  The score at the end is a number between 0 and 1 which indicates the fraction of predictions that were correct over all folds (though we technically need a <a href = "https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets">test set</a> to accurately assess its performance, but that is beyond the scope of this assignment).
                                     </p>
 
                                     <p>
-                                        Once you are at the point where you're getting a score close to 1 for your classification, you can then analyze the model.  If you have <b>N</b> words in your vocabulary (and hence <b>N</b> columns in your data matrix <code>X</code>), then <code>clf.coef_.flatten()</code> contains an array of <b>N</b> weights for each column.  If a weight is positive in a particular column, then it means the corresponding word contributes towards making the review positive.  Conversely, if a particular column is negative, it means the corresponding word contributes towards making the review negative.  <b>To complete this task, print out the 15 words with the largest positive coefficient and the 15 words with the largest negative coefficient</b>.  
+                                        Once the model is trained, we can analyze it.  If you have <b>N</b> words in your vocabulary (and hence <b>N</b> columns in your data matrix <code>X</code>), then <code>clf.coef_.flatten()</code> contains an array of <b>N</b> weights for each column.  If a weight is positive in a particular column, then it means the corresponding word contributes towards making the review positive.  Conversely, if a particular column is negative, it means the corresponding word contributes towards making the review negative.  <b>To complete this task, print out the 15 words with the largest positive coefficient and the 15 words with the largest negative coefficient</b>.  
                                     </p>
 
                                     <h3><a name = "part3">Part 3: Reviews of Your Choice (5 Points)</a></h3>
@@ -238,8 +224,9 @@
 												<li><a href = "../../Assignments/HW4_Chaos/index.html">HW4: Chaos</a></li>
 												<li><a href = "../../Assignments/HW5_TweetWrangling/index.html">HW5: Tweet Wrangling</a></li>
 												<li><a href = "../../Assignments/HW6_DigitsNN/index.html">HW6: Nearest Neighbors for Digit Classification</a></li>
+                                                <li><a href = "../../Assignments/HW7_MovieReviews/index.html">HW7: Movie Reviews</a></li>
 												<!--
-                                                <li><a href = "../../Assignments/HW6_MovieReviews/index.html">HW6: Movie Reviews</a></li>
+
                                                 <li><a href = "../../Assignments/HW7_NeedlemanWunsch/index.html">HW7: Needleman-Wunsch</a></li>
                                                 <li><a href = "../../Assignments/HW8_MarkovHybrids/index.html">HW8: Markov Hybrids</a></li>!-->
                                             </ul>
